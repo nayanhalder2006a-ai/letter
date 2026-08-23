@@ -2,30 +2,29 @@
 <html lang="en">
 
 <head>
+    <meta charset="UTF-8">
 
-<meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0">
+    <title>A Little Surprise For You</title>
 
-<title>A Little Letter ❤️</title>
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
 
-<link rel="preconnect"
-      href="https://fonts.googleapis.com">
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
 
-<link rel="preconnect"
-      href="https://fonts.gstatic.com"
-      crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap"
-      rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
 
 
 <style>
 
-/* =========================
+/* =========================================
    RESET
-========================= */
+========================================= */
 
 * {
     margin: 0;
@@ -40,74 +39,75 @@ body {
 }
 
 body {
+
     min-height: 100vh;
 
-    overflow-x: hidden;
-
-    color: white;
-
-    font-family:
-        "Playfair Display",
-        Georgia,
-        serif;
+    overflow: hidden;
 
     background:
-        #120b13;
-}
-
-
-/* =========================
-   BACKGROUND
-========================= */
-
-.background {
-    position: fixed;
-
-    inset: -20%;
-
-    z-index: -2;
-
-    background:
-
         radial-gradient(
-            circle at 20% 20%,
-            rgba(255,95,136,.25),
-            transparent 30%
+            circle at 15% 20%,
+            rgba(255, 105, 145, .22),
+            transparent 28%
         ),
 
         radial-gradient(
-            circle at 80% 70%,
-            rgba(170,90,255,.18),
+            circle at 85% 80%,
+            rgba(179, 91, 255, .18),
             transparent 30%
-        );
+        ),
 
-    filter: blur(10px);
+        #100a12;
 
-    animation:
-        backgroundMove
-        8s
-        ease-in-out
-        infinite
-        alternate;
-}
+    color: white;
 
-@keyframes backgroundMove {
-
-    from {
-        transform: scale(1);
-    }
-
-    to {
-        transform: scale(1.12);
-    }
+    font-family: "Poppins", sans-serif;
 }
 
 
-/* =========================
-   HEARTS
-========================= */
+/* =========================================
+   BACKGROUND GLOW
+========================================= */
 
-#hearts {
+.glow {
+
+    position: fixed;
+
+    width: 400px;
+    height: 400px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255, 105, 145, .12);
+
+    filter: blur(100px);
+
+    pointer-events: none;
+}
+
+.glow.one {
+
+    top: -180px;
+    left: -150px;
+}
+
+.glow.two {
+
+    right: -180px;
+    bottom: -180px;
+
+    background:
+        rgba(170, 90, 255, .12);
+}
+
+
+/* =========================================
+   FLOATING EMOJIS
+========================================= */
+
+#emojiContainer {
+
     position: fixed;
 
     inset: 0;
@@ -116,67 +116,66 @@ body {
 
     pointer-events: none;
 
-    z-index: 10;
+    z-index: 1;
 }
 
-.heart {
+
+.emoji {
+
     position: absolute;
 
-    bottom: -30px;
-
-    color: #ff8fab;
+    bottom: -60px;
 
     opacity: 0;
 
     animation:
-        heartFloat
+        floatEmoji
         linear
         forwards;
 
-    filter:
-        drop-shadow(
-            0 0 8px
-            rgba(255,143,171,.5)
-        );
+    user-select: none;
 }
 
-@keyframes heartFloat {
+
+@keyframes floatEmoji {
 
     0% {
 
         transform:
             translateY(0)
             rotate(0deg)
-            scale(.5);
+            scale(.7);
 
         opacity: 0;
     }
 
     15% {
-        opacity: .8;
+        opacity: .7;
     }
 
     100% {
 
         transform:
             translateY(-110vh)
-            rotate(45deg)
-            scale(1.2);
+            rotate(25deg)
+            scale(1.1);
 
         opacity: 0;
     }
 }
 
 
-/* =========================
+/* =========================================
    MAIN
-========================= */
+========================================= */
 
-.container {
+main {
+
+    position: relative;
+
+    z-index: 2;
 
     min-height: 100vh;
-
-    width: 100%;
 
     display: flex;
 
@@ -184,22 +183,24 @@ body {
 
     align-items: center;
 
-    padding:
-        20px;
+    padding: 20px;
 }
 
 
-/* =========================
+/* =========================================
    CARD
-========================= */
+========================================= */
 
 .card {
 
     width:
-        min(520px, 100%);
+        min(
+            500px,
+            100%
+        );
 
     padding:
-        45px 30px;
+        48px 35px;
 
     text-align: center;
 
@@ -207,429 +208,389 @@ body {
         1px solid
         rgba(255,255,255,.12);
 
-    border-radius:
-        25px;
+    border-radius: 28px;
 
     background:
-        rgba(255,255,255,.06);
+        rgba(255,255,255,.055);
 
     backdrop-filter:
-        blur(20px);
+        blur(22px);
+
+    -webkit-backdrop-filter:
+        blur(22px);
 
     box-shadow:
-        0 30px 80px
-        rgba(0,0,0,.4);
-}
-
-
-/* =========================
-   TITLE
-========================= */
-
-.small-heart {
-
-    font-size:
-        35px;
-
-    color:
-        #ff8fab;
+        0 30px 100px
+        rgba(0,0,0,.45);
 
     animation:
-        heartbeat
-        1.5s
-        infinite;
+        cardAppear
+        1s
+        ease;
 }
 
-@keyframes heartbeat {
 
-    50% {
+@keyframes cardAppear {
+
+    from {
+
+        opacity: 0;
 
         transform:
-            scale(1.25);
+            translateY(35px)
+            scale(.95);
+    }
 
-        text-shadow:
-            0 0 25px
-            rgba(255,143,171,.8);
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
     }
 }
 
-.eyebrow {
 
-    margin-top:
-        15px;
+/* =========================================
+   TOP ICON
+========================================= */
 
-    text-transform:
-        uppercase;
+.icon {
 
-    letter-spacing:
-        .2em;
+    width: 75px;
 
-    font-size:
-        10px;
+    height: 75px;
 
-    opacity:
-        .6;
-}
+    margin:
+        0 auto 20px;
 
-h1 {
+    display: flex;
 
-    margin-top:
-        15px;
+    align-items: center;
 
-    font-size:
-        clamp(
-            50px,
-            12vw,
-            75px
-        );
+    justify-content: center;
 
-    line-height:
-        .9;
+    border-radius: 50%;
 
-    font-weight:
-        500;
-}
-
-h1 span {
-
-    display:
-        block;
-
-    color:
-        #ff8fab;
-
-    font-style:
-        italic;
-}
-
-.description {
-
-    margin-top:
-        25px;
-
-    line-height:
-        1.6;
-
-    opacity:
-        .7;
-
-    font-size:
-        14px;
-}
-
-
-/* =========================
-   INPUT
-========================= */
-
-.input-box {
-
-    margin-top:
-        30px;
-}
-
-.name-input {
-
-    width:
-        100%;
-
-    padding:
-        15px 20px;
+    background:
+        rgba(255,143,171,.12);
 
     border:
         1px solid
-        rgba(255,255,255,.2);
+        rgba(255,143,171,.25);
 
-    border-radius:
-        30px;
-
-    outline:
-        none;
-
-    background:
-        rgba(255,255,255,.08);
-
-    color:
-        white;
-
-    text-align:
-        center;
-
-    font-size:
-        17px;
-
-    transition:
-        .3s;
-}
-
-.name-input::placeholder {
-
-    color:
-        rgba(255,255,255,.45);
-}
-
-.name-input:focus {
-
-    border-color:
-        #ff8fab;
+    font-size: 34px;
 
     box-shadow:
-        0 0 20px
-        rgba(255,143,171,.15);
+        0 0 35px
+        rgba(255,105,145,.15);
+
+    animation:
+        iconFloat
+        2.5s
+        ease-in-out
+        infinite
+        alternate;
 }
 
 
-/* =========================
-   GENERATE BUTTON
-========================= */
+@keyframes iconFloat {
 
-.generate {
+    to {
 
-    margin-top:
-        15px;
+        transform:
+            translateY(-7px)
+            rotate(3deg);
+    }
+}
 
-    width:
-        100%;
 
-    padding:
-        14px 20px;
+/* =========================================
+   TEXT
+========================================= */
 
-    border:
-        none;
+.small-title {
 
-    border-radius:
-        30px;
+    font-size: 11px;
 
-    background:
-        #ff6f98;
+    letter-spacing: .25em;
+
+    text-transform: uppercase;
 
     color:
-        white;
+        rgba(255,255,255,.55);
 
-    font-size:
-        15px;
-
-    font-weight:
-        600;
-
-    cursor:
-        pointer;
-
-    transition:
-        .3s;
+    margin-bottom: 12px;
 }
 
-.generate:hover {
+
+h1 {
+
+    font-family:
+        "Caveat",
+        cursive;
+
+    font-size:
+        clamp(
+            55px,
+            12vw,
+            80px
+        );
+
+    font-weight: 500;
+
+    line-height: .85;
+}
+
+
+h1 span {
+
+    display: block;
+
+    color: #ff8fab;
+
+    font-style: italic;
+}
+
+
+.description {
+
+    margin:
+        25px auto 30px;
+
+    max-width: 370px;
+
+    color:
+        rgba(255,255,255,.65);
+
+    font-size: 14px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================
+   NAME INPUT
+========================================= */
+
+.input-wrapper {
+
+    position: relative;
+
+    margin-top: 20px;
+}
+
+
+.input-wrapper input {
+
+    width: 100%;
+
+    height: 58px;
+
+    padding:
+        0 20px;
+
+    border-radius: 15px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.14);
+
+    outline: none;
+
+    background:
+        rgba(0,0,0,.2);
+
+    color: white;
+
+    font-family:
+        "Poppins",
+        sans-serif;
+
+    font-size: 15px;
+
+    text-align: center;
+
+    transition: .3s;
+}
+
+
+.input-wrapper input::placeholder {
+
+    color:
+        rgba(255,255,255,.38);
+}
+
+
+.input-wrapper input:focus {
+
+    border-color:
+        rgba(255,143,171,.7);
+
+    box-shadow:
+        0 0 25px
+        rgba(255,105,145,.12);
+}
+
+
+/* =========================================
+   BUTTON
+========================================= */
+
+.open-button {
+
+    width: 100%;
+
+    height: 58px;
+
+    margin-top: 14px;
+
+    border: none;
+
+    border-radius: 15px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff8fab,
+            #c83d67
+        );
+
+    color: white;
+
+    font-family:
+        "Poppins",
+        sans-serif;
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 12px 30px
+        rgba(200,61,103,.3);
+
+    transition:
+        transform .25s,
+        box-shadow .25s;
+}
+
+
+.open-button:hover {
 
     transform:
         translateY(-3px);
 
     box-shadow:
-        0 10px 30px
-        rgba(255,111,152,.3);
+        0 18px 40px
+        rgba(200,61,103,.45);
 }
 
-.generate:active {
+
+.open-button:active {
 
     transform:
-        scale(.97);
+        scale(.98);
 }
 
 
-/* =========================
-   RESULT
-========================= */
+/* =========================================
+   BOTTOM TEXT
+========================================= */
 
-.result {
+.bottom-text {
 
-    display:
-        none;
+    margin-top: 24px;
 
-    margin-top:
-        25px;
-}
-
-.result.show {
-
-    display:
-        block;
-}
-
-.result-title {
-
-    font-size:
-        13px;
-
-    opacity:
-        .65;
-
-    margin-bottom:
-        10px;
-}
-
-.link-box {
-
-    display:
-        flex;
-
-    gap:
-        8px;
-}
-
-.generated-link {
-
-    flex:
-        1;
-
-    min-width:
-        0;
-
-    padding:
-        12px;
-
-    border:
-        1px solid
-        rgba(255,255,255,.15);
-
-    border-radius:
-        20px;
-
-    outline:
-        none;
-
-    background:
-        rgba(255,255,255,.08);
+    font-size: 11px;
 
     color:
-        white;
-
-    font-size:
-        12px;
-}
-
-.copy {
-
-    padding:
-        0 18px;
-
-    border:
-        none;
-
-    border-radius:
-        25px;
-
-    background:
-        rgba(255,255,255,.13);
-
-    color:
-        white;
-
-    cursor:
-        pointer;
-
-    transition:
-        .3s;
-
-    white-space:
-        nowrap;
-}
-
-.copy:hover {
-
-    background:
-        rgba(255,255,255,.22);
-}
-
-.open-link {
-
-    display:
-        inline-block;
-
-    margin-top:
-        15px;
-
-    color:
-        #ff8fab;
-
-    text-decoration:
-        none;
-
-    font-size:
-        14px;
+        rgba(255,255,255,.38);
 }
 
 
-/* =========================
+/* =========================================
+   ERROR
+========================================= */
+
+.error {
+
+    height: 20px;
+
+    margin-top: 8px;
+
+    font-size: 12px;
+
+    color: #ff8fab;
+
+    opacity: 0;
+
+    transition: .2s;
+}
+
+
+.error.show {
+    opacity: 1;
+}
+
+
+/* =========================================
    MOBILE
-========================= */
+========================================= */
 
 @media (max-width: 600px) {
 
-    .container {
-
-        padding:
-            15px;
+    main {
+        padding: 15px;
     }
 
     .card {
 
         padding:
-            35px 20px;
+            40px 22px;
 
-        border-radius:
-            20px;
+        border-radius: 24px;
+    }
+
+    .icon {
+
+        width: 65px;
+        height: 65px;
+
+        font-size: 29px;
     }
 
     h1 {
 
-        font-size:
-            55px;
+        font-size: 57px;
     }
 
     .description {
 
-        font-size:
-            13px;
+        font-size: 13px;
+
+        margin-top: 22px;
     }
 
-    .link-box {
-
-        flex-direction:
-            column;
-    }
-
-    .copy {
-
-        width:
-            100%;
-
-        padding:
-            12px;
-    }
 }
 
-
-/* Very small phones */
 
 @media (max-width: 360px) {
 
     .card {
 
         padding:
-            30px 16px;
+            32px 18px;
     }
 
     h1 {
 
-        font-size:
-            48px;
+        font-size: 50px;
     }
 
-    .small-heart {
-
-        font-size:
-            28px;
-    }
 }
 
 </style>
@@ -640,32 +601,40 @@ h1 span {
 <body>
 
 
-<div class="background"></div>
+<!-- Background -->
+<div class="glow one"></div>
+<div class="glow two"></div>
 
-<div id="hearts"></div>
+
+<!-- Floating friendship emojis -->
+<div id="emojiContainer"></div>
 
 
-<div class="container">
+<main>
 
     <div class="card">
 
 
-        <div class="small-heart">
-            ♥
+        <!-- Icon -->
+
+        <div class="icon">
+            🤝
         </div>
 
 
-        <p class="eyebrow">
-            Create something special
-        </p>
+        <!-- Heading -->
+
+        <div class="small-title">
+            A little surprise
+        </div>
 
 
         <h1>
 
-            A Little
+            Something
 
             <span>
-                Letter
+                For You
             </span>
 
         </h1>
@@ -673,136 +642,182 @@ h1 span {
 
         <p class="description">
 
-            Enter their name and create
-            a personal letter link.
+            কিছু কথা সরাসরি বলা হয় না।
+            তাই একটা ছোট্ট চিঠির মাধ্যমে
+            কিছু কথা তোমার সাথে share করতে চাই।
 
         </p>
 
 
-        <div class="input-box">
+        <!-- Name -->
 
+        <div class="input-wrapper">
 
             <input
-                id="nameInput"
-                class="name-input"
                 type="text"
+                id="nameInput"
+                placeholder="Enter your name"
                 maxlength="30"
-                placeholder="Enter their name..."
                 autocomplete="off"
             >
-
-
-            <button
-                id="generateButton"
-                class="generate"
-            >
-
-                Generate Letter Link ❤️
-
-            </button>
-
 
         </div>
 
 
         <div
-            id="result"
-            class="result"
+            id="error"
+            class="error"
+        >
+            Please enter your name
+        </div>
+
+
+        <!-- Button -->
+
+        <button
+            id="openButton"
+            class="open-button"
         >
 
-            <p class="result-title">
-                Your personal link:
-            </p>
+            Open Your Letter
+            &nbsp; →
+            
+        </button>
 
 
-            <div class="link-box">
+        <p class="bottom-text">
 
+            Made specially for a best friend ✨
 
-                <input
-                    id="generatedLink"
-                    class="generated-link"
-                    readonly
-                >
-
-
-                <button
-                    id="copyButton"
-                    class="copy"
-                >
-                    Copy
-                </button>
-
-
-            </div>
-
-
-            <a
-                id="openLink"
-                class="open-link"
-                target="_blank"
-                rel="noopener"
-            >
-
-                Open Letter ↗
-
-            </a>
-
-        </div>
+        </p>
 
 
     </div>
 
-</div>
+</main>
 
 
 
 <script>
 
-/* =========================
+/* =========================================
    ELEMENTS
-========================= */
+========================================= */
 
 const nameInput =
     document.getElementById(
         "nameInput"
     );
 
-const generateButton =
-    document.getElementById(
-        "generateButton"
-    );
 
-const result =
+const openButton =
     document.getElementById(
-        "result"
-    );
-
-const generatedLink =
-    document.getElementById(
-        "generatedLink"
-    );
-
-const copyButton =
-    document.getElementById(
-        "copyButton"
-    );
-
-const openLink =
-    document.getElementById(
-        "openLink"
-    );
-
-const hearts =
-    document.getElementById(
-        "hearts"
+        "openButton"
     );
 
 
-/* =========================
-   GENERATE LINK
-========================= */
+const error =
+    document.getElementById(
+        "error"
+    );
 
-function generateLink() {
+
+const emojiContainer =
+    document.getElementById(
+        "emojiContainer"
+    );
+
+
+/* =========================================
+   EMOJI LIST
+========================================= */
+
+const emojis = [
+
+    "🤝",
+    "⭐",
+    "✨",
+    "🌟",
+    "🎉",
+    "😊",
+    "🌱",
+    "🫶",
+    "🎈"
+
+];
+
+
+/* =========================================
+   CREATE EMOJI
+========================================= */
+
+function createEmoji() {
+
+    const emoji =
+        document.createElement(
+            "span"
+        );
+
+
+    emoji.className =
+        "emoji";
+
+
+    emoji.textContent =
+        emojis[
+            Math.floor(
+                Math.random() *
+                emojis.length
+            )
+        ];
+
+
+    emoji.style.left =
+        Math.random() * 100 + "%";
+
+
+    emoji.style.fontSize =
+        (
+            15 +
+            Math.random() * 18
+        ) + "px";
+
+
+    emoji.style.animationDuration =
+        (
+            6 +
+            Math.random() * 6
+        ) + "s";
+
+
+    emojiContainer.appendChild(
+        emoji
+    );
+
+
+    setTimeout(
+        () => emoji.remove(),
+        13000
+    );
+
+}
+
+
+/* =========================================
+   START EMOJIS
+========================================= */
+
+setInterval(
+    createEmoji,
+    900
+);
+
+
+/* =========================================
+   OPEN LETTER
+========================================= */
+
+function openLetter() {
 
     const name =
         nameInput.value.trim();
@@ -810,94 +825,55 @@ function generateLink() {
 
     if (!name) {
 
+        error.classList.add(
+            "show"
+        );
+
         nameInput.focus();
-
-        nameInput.style.borderColor =
-            "#ff6f98";
-
-        setTimeout(() => {
-
-            nameInput.style.borderColor =
-                "rgba(255,255,255,.2)";
-
-        }, 1000);
 
         return;
     }
 
 
-    /*
-       Encode the name.
-
-       Example:
-
-       Priya Das
-
-       becomes:
-
-       Priya%20Das
-    */
-
-    const encodedName =
-        encodeURIComponent(name);
-
-
-    /*
-       Find the folder where
-       index.html is located.
-    */
-
-    const baseURL =
-        window.location.href
-            .substring(
-                0,
-                window.location.href.lastIndexOf("/")
-                + 1
-            );
-
-
-    /*
-       Create:
-
-       letter.html?name=Priya
-    */
-
-    const link =
-        baseURL +
-        "letter.html?name=" +
-        encodedName;
-
-
-    generatedLink.value =
-        link;
-
-    openLink.href =
-        link;
-
-
-    result.classList.add(
+    error.classList.remove(
         "show"
     );
 
 
-    heartBurst(20);
+    /*
+       Encode name safely for URL
+    */
+
+    const encodedName =
+        encodeURIComponent(
+            name
+        );
+
+
+    /*
+       Go to letter.html
+    */
+
+    window.location.href =
+        "letter.html?name=" +
+        encodedName;
 
 }
 
 
-/* =========================
-   BUTTON
-========================= */
+/* =========================================
+   BUTTON CLICK
+========================================= */
 
-generateButton.addEventListener(
+openButton.addEventListener(
     "click",
-    generateLink
+    openLetter
 );
 
 
-/* =========================
-   ENTER
-========================= */
+/* =========================================
+   ENTER KEY
+========================================= */
 
 nameInput.addEventListener(
     "keydown",
@@ -907,7 +883,7 @@ nameInput.addEventListener(
             event.key === "Enter"
         ) {
 
-            generateLink();
+            openLetter();
 
         }
 
@@ -915,172 +891,28 @@ nameInput.addEventListener(
 );
 
 
-/* =========================
-   COPY
-========================= */
+/* =========================================
+   REMOVE ERROR WHEN TYPING
+========================================= */
 
-copyButton.addEventListener(
-    "click",
-    async function() {
-
-        const link =
-            generatedLink.value;
-
-
-        if (!link) {
-            return;
-        }
-
-
-        try {
-
-            await navigator.clipboard.writeText(
-                link
-            );
-
-        }
-
-        catch {
-
-            generatedLink.select();
-
-            document.execCommand(
-                "copy"
-            );
-
-        }
-
-
-        copyButton.textContent =
-            "Copied ❤️";
-
-
-        setTimeout(
-            function() {
-
-                copyButton.textContent =
-                    "Copy";
-
-            },
-            2000
-        );
-
-    }
-);
-
-
-/* =========================
-   HEART
-========================= */
-
-function createHeart(
-    large = false
-) {
-
-    const heart =
-        document.createElement(
-            "span"
-        );
-
-
-    heart.className =
-        "heart";
-
-
-    heart.textContent =
-        Math.random() > .2
-            ? "♥"
-            : "♡";
-
-
-    heart.style.left =
-        Math.random() * 100 +
-        "%";
-
-
-    heart.style.fontSize =
-
-        (
-            large
-                ? 22 +
-                  Math.random() * 20
-                : 10 +
-                  Math.random() * 15
-        ) +
-        "px";
-
-
-    heart.style.animationDuration =
-
-        5 +
-        Math.random() * 7 +
-        "s";
-
-
-    hearts.appendChild(
-        heart
-    );
-
-
-    setTimeout(
-        function() {
-
-            heart.remove();
-
-        },
-        14000
-    );
-
-}
-
-
-/* =========================
-   HEART BURST
-========================= */
-
-function heartBurst(amount) {
-
-    for (
-        let i = 0;
-        i < amount;
-        i++
-    ) {
-
-        setTimeout(
-            function() {
-
-                createHeart(true);
-
-            },
-            i * 50
-        );
-
-    }
-
-}
-
-
-/* =========================
-   BACKGROUND HEARTS
-========================= */
-
-setInterval(
+nameInput.addEventListener(
+    "input",
     function() {
 
         if (
-            Math.random() > .25
+            nameInput.value.trim()
         ) {
 
-            createHeart();
+            error.classList.remove(
+                "show"
+            );
 
         }
 
-    },
-    900
+    }
 );
 
 </script>
-
 
 </body>
 
