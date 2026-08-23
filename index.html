@@ -22,9 +22,9 @@
 
 <style>
 
-/* =========================================
+/* =========================
    RESET
-========================================= */
+========================= */
 
 * {
     margin: 0;
@@ -42,32 +42,32 @@ body {
 
     min-height: 100vh;
 
-    overflow: hidden;
+    overflow-x: hidden;
 
     background:
         radial-gradient(
             circle at 15% 20%,
-            rgba(255, 105, 145, .22),
-            transparent 28%
-        ),
-
-        radial-gradient(
-            circle at 85% 80%,
-            rgba(179, 91, 255, .18),
+            rgba(255,105,145,.23),
             transparent 30%
         ),
-
+        radial-gradient(
+            circle at 85% 80%,
+            rgba(170,90,255,.18),
+            transparent 30%
+        ),
         #100a12;
 
     color: white;
 
-    font-family: "Poppins", sans-serif;
+    font-family:
+        "Poppins",
+        sans-serif;
 }
 
 
-/* =========================================
+/* =========================
    BACKGROUND GLOW
-========================================= */
+========================= */
 
 .glow {
 
@@ -78,18 +78,20 @@ body {
 
     border-radius: 50%;
 
-    background:
-        rgba(255, 105, 145, .12);
-
     filter: blur(100px);
 
     pointer-events: none;
+
+    opacity: .7;
 }
 
 .glow.one {
 
     top: -180px;
     left: -150px;
+
+    background:
+        rgba(255,105,145,.15);
 }
 
 .glow.two {
@@ -98,13 +100,13 @@ body {
     bottom: -180px;
 
     background:
-        rgba(170, 90, 255, .12);
+        rgba(170,90,255,.13);
 }
 
 
-/* =========================================
+/* =========================
    FLOATING EMOJIS
-========================================= */
+========================= */
 
 #emojiContainer {
 
@@ -165,9 +167,9 @@ body {
 }
 
 
-/* =========================================
+/* =========================
    MAIN
-========================================= */
+========================= */
 
 main {
 
@@ -187,20 +189,20 @@ main {
 }
 
 
-/* =========================================
+/* =========================
    CARD
-========================================= */
+========================= */
 
 .card {
 
     width:
         min(
-            500px,
+            510px,
             100%
         );
 
     padding:
-        48px 35px;
+        45px 35px;
 
     text-align: center;
 
@@ -225,7 +227,7 @@ main {
 
     animation:
         cardAppear
-        1s
+        .8s
         ease;
 }
 
@@ -237,8 +239,8 @@ main {
         opacity: 0;
 
         transform:
-            translateY(35px)
-            scale(.95);
+            translateY(30px)
+            scale(.96);
     }
 
     to {
@@ -252,14 +254,13 @@ main {
 }
 
 
-/* =========================================
-   TOP ICON
-========================================= */
+/* =========================
+   ICON
+========================= */
 
 .icon {
 
     width: 75px;
-
     height: 75px;
 
     margin:
@@ -267,9 +268,9 @@ main {
 
     display: flex;
 
-    align-items: center;
-
     justify-content: center;
+
+    align-items: center;
 
     border-radius: 50%;
 
@@ -281,10 +282,6 @@ main {
         rgba(255,143,171,.25);
 
     font-size: 34px;
-
-    box-shadow:
-        0 0 35px
-        rgba(255,105,145,.15);
 
     animation:
         iconFloat
@@ -306,9 +303,9 @@ main {
 }
 
 
-/* =========================================
-   TEXT
-========================================= */
+/* =========================
+   TITLE
+========================= */
 
 .small-title {
 
@@ -338,9 +335,9 @@ h1 {
             80px
         );
 
-    font-weight: 500;
-
     line-height: .85;
+
+    font-weight: 500;
 }
 
 
@@ -356,10 +353,10 @@ h1 span {
 
 .description {
 
-    margin:
-        25px auto 30px;
+    max-width: 390px;
 
-    max-width: 370px;
+    margin:
+        25px auto 28px;
 
     color:
         rgba(255,255,255,.65);
@@ -370,15 +367,13 @@ h1 span {
 }
 
 
-/* =========================================
-   NAME INPUT
-========================================= */
+/* =========================
+   INPUT
+========================= */
 
 .input-wrapper {
 
-    position: relative;
-
-    margin-top: 20px;
+    width: 100%;
 }
 
 
@@ -391,11 +386,11 @@ h1 span {
     padding:
         0 20px;
 
-    border-radius: 15px;
-
     border:
         1px solid
         rgba(255,255,255,.14);
+
+    border-radius: 15px;
 
     outline: none;
 
@@ -434,11 +429,11 @@ h1 span {
 }
 
 
-/* =========================================
-   BUTTON
-========================================= */
+/* =========================
+   GENERATE BUTTON
+========================= */
 
-.open-button {
+.generate-button {
 
     width: 100%;
 
@@ -473,13 +468,11 @@ h1 span {
         0 12px 30px
         rgba(200,61,103,.3);
 
-    transition:
-        transform .25s,
-        box-shadow .25s;
+    transition: .25s;
 }
 
 
-.open-button:hover {
+.generate-button:hover {
 
     transform:
         translateY(-3px);
@@ -490,37 +483,15 @@ h1 span {
 }
 
 
-.open-button:active {
-
-    transform:
-        scale(.98);
-}
-
-
-/* =========================================
-   BOTTOM TEXT
-========================================= */
-
-.bottom-text {
-
-    margin-top: 24px;
-
-    font-size: 11px;
-
-    color:
-        rgba(255,255,255,.38);
-}
-
-
-/* =========================================
+/* =========================
    ERROR
-========================================= */
+========================= */
 
 .error {
 
-    height: 20px;
+    min-height: 20px;
 
-    margin-top: 8px;
+    margin-top: 7px;
 
     font-size: 12px;
 
@@ -537,9 +508,229 @@ h1 span {
 }
 
 
-/* =========================================
+/* =========================
+   RESULT
+========================= */
+
+.result {
+
+    display: none;
+
+    margin-top: 25px;
+
+    padding: 20px;
+
+    border-radius: 18px;
+
+    background:
+        rgba(255,255,255,.05);
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    animation:
+        resultAppear
+        .5s
+        ease;
+}
+
+
+.result.show {
+    display: block;
+}
+
+
+@keyframes resultAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(15px);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+.result-title {
+
+    font-size: 12px;
+
+    color:
+        rgba(255,255,255,.55);
+
+    margin-bottom: 10px;
+}
+
+
+/* =========================
+   GENERATED LINK
+========================= */
+
+.link-box {
+
+    display: flex;
+
+    gap: 8px;
+
+    width: 100%;
+}
+
+
+#generatedLink {
+
+    flex: 1;
+
+    min-width: 0;
+
+    height: 45px;
+
+    padding:
+        0 12px;
+
+    border: none;
+
+    outline: none;
+
+    border-radius: 10px;
+
+    background:
+        rgba(0,0,0,.3);
+
+    color: #ffb2c5;
+
+    font-family:
+        monospace;
+
+    font-size: 11px;
+}
+
+
+.copy-button {
+
+    width: 75px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background:
+        rgba(255,143,171,.15);
+
+    border:
+        1px solid
+        rgba(255,143,171,.2);
+
+    color: white;
+
+    cursor: pointer;
+
+    transition: .2s;
+}
+
+
+.copy-button:hover {
+
+    background:
+        rgba(255,143,171,.25);
+}
+
+
+/* =========================
+   ACTION BUTTONS
+========================= */
+
+.actions {
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 10px;
+
+    margin-top: 12px;
+}
+
+
+.action-button {
+
+    height: 48px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    cursor: pointer;
+
+    font-family:
+        "Poppins",
+        sans-serif;
+
+    font-size: 13px;
+
+    font-weight: 500;
+
+    transition: .2s;
+}
+
+
+.open-button {
+
+    background:
+        #b83d62;
+
+    color: white;
+}
+
+
+.share-button {
+
+    background:
+        rgba(255,255,255,.08);
+
+    color: white;
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+}
+
+
+.action-button:hover {
+
+    transform:
+        translateY(-2px);
+}
+
+
+/* =========================
+   BOTTOM
+========================= */
+
+.bottom-text {
+
+    margin-top: 22px;
+
+    color:
+        rgba(255,255,255,.35);
+
+    font-size: 11px;
+}
+
+
+/* =========================
    MOBILE
-========================================= */
+========================= */
 
 @media (max-width: 600px) {
 
@@ -550,7 +741,7 @@ h1 span {
     .card {
 
         padding:
-            40px 22px;
+            38px 20px;
 
         border-radius: 24px;
     }
@@ -564,33 +755,42 @@ h1 span {
     }
 
     h1 {
-
-        font-size: 57px;
+        font-size: 58px;
     }
 
     .description {
-
         font-size: 13px;
-
-        margin-top: 22px;
     }
 
+    .actions {
+        grid-template-columns: 1fr;
+    }
+
+    .link-box {
+        flex-direction: column;
+    }
+
+    #generatedLink {
+        width: 100%;
+    }
+
+    .copy-button {
+        width: 100%;
+        height: 45px;
+    }
 }
 
 
 @media (max-width: 360px) {
 
     .card {
-
         padding:
-            32px 18px;
+            30px 16px;
     }
 
     h1 {
-
         font-size: 50px;
     }
-
 }
 
 </style>
@@ -602,12 +802,15 @@ h1 span {
 
 
 <!-- Background -->
+
 <div class="glow one"></div>
 <div class="glow two"></div>
 
 
 <!-- Floating friendship emojis -->
+
 <div id="emojiContainer"></div>
+
 
 
 <main>
@@ -649,6 +852,7 @@ h1 span {
         </p>
 
 
+
         <!-- Name -->
 
         <div class="input-wrapper">
@@ -668,21 +872,91 @@ h1 span {
             id="error"
             class="error"
         >
-            Please enter your name
+
+            Please enter your name.
+
         </div>
 
 
-        <!-- Button -->
+
+        <!-- Generate -->
 
         <button
-            id="openButton"
-            class="open-button"
+            id="generateButton"
+            class="generate-button"
         >
 
-            Open Your Letter
-            &nbsp; →
-            
+            Generate Your Letter Link →
+
         </button>
+
+
+
+        <!-- Result -->
+
+        <div
+            id="result"
+            class="result"
+        >
+
+
+            <div class="result-title">
+
+                Your personalized link
+
+            </div>
+
+
+            <div class="link-box">
+
+
+                <input
+                    id="generatedLink"
+                    type="text"
+                    readonly
+                >
+
+
+                <button
+                    id="copyButton"
+                    class="copy-button"
+                >
+
+                    Copy
+
+                </button>
+
+
+            </div>
+
+
+            <div class="actions">
+
+
+                <button
+                    id="openButton"
+                    class="action-button open-button"
+                >
+
+                    Open Letter
+
+                </button>
+
+
+                <button
+                    id="shareButton"
+                    class="action-button share-button"
+                >
+
+                    WhatsApp Share
+
+                </button>
+
+
+            </div>
+
+
+        </div>
 
 
         <p class="bottom-text">
@@ -710,9 +984,9 @@ const nameInput =
     );
 
 
-const openButton =
+const generateButton =
     document.getElementById(
-        "openButton"
+        "generateButton"
     );
 
 
@@ -722,14 +996,45 @@ const error =
     );
 
 
+const result =
+    document.getElementById(
+        "result"
+    );
+
+
+const generatedLink =
+    document.getElementById(
+        "generatedLink"
+    );
+
+
+const copyButton =
+    document.getElementById(
+        "copyButton"
+    );
+
+
+const openButton =
+    document.getElementById(
+        "openButton"
+    );
+
+
+const shareButton =
+    document.getElementById(
+        "shareButton"
+    );
+
+
 const emojiContainer =
     document.getElementById(
         "emojiContainer"
     );
 
 
+
 /* =========================================
-   EMOJI LIST
+   EMOJIS
 ========================================= */
 
 const emojis = [
@@ -747,8 +1052,9 @@ const emojis = [
 ];
 
 
+
 /* =========================================
-   CREATE EMOJI
+   FLOATING EMOJI
 ========================================= */
 
 function createEmoji() {
@@ -799,13 +1105,8 @@ function createEmoji() {
         () => emoji.remove(),
         13000
     );
-
 }
 
-
-/* =========================================
-   START EMOJIS
-========================================= */
 
 setInterval(
     createEmoji,
@@ -813,19 +1114,26 @@ setInterval(
 );
 
 
+
 /* =========================================
-   OPEN LETTER
+   GENERATE LINK
 ========================================= */
 
-function openLetter() {
+function generateLink() {
 
     const name =
         nameInput.value.trim();
 
 
+    /* Empty name */
+
     if (!name) {
 
         error.classList.add(
+            "show"
+        );
+
+        result.classList.remove(
             "show"
         );
 
@@ -841,7 +1149,8 @@ function openLetter() {
 
 
     /*
-       Encode name safely for URL
+       Encode name so spaces
+       and Bengali names work.
     */
 
     const encodedName =
@@ -851,24 +1160,70 @@ function openLetter() {
 
 
     /*
-       Go to letter.html
+       Current GitHub Pages URL.
+
+       Example:
+
+       https://username.github.io/repository/
+
+       Then:
+
+       letter.html?name=Nayan
     */
 
-    window.location.href =
+    const baseURL =
+        window.location.href
+            .substring(
+                0,
+                window.location.href
+                    .lastIndexOf("/") + 1
+            );
+
+
+    const finalURL =
+        baseURL +
         "letter.html?name=" +
         encodedName;
+
+
+    generatedLink.value =
+        finalURL;
+
+
+    result.classList.add(
+        "show"
+    );
+
+
+    /*
+       Scroll result into view
+    */
+
+    setTimeout(
+        function() {
+
+            result.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
+
+        },
+        100
+    );
 
 }
 
 
+
 /* =========================================
-   BUTTON CLICK
+   GENERATE BUTTON
 ========================================= */
 
-openButton.addEventListener(
+generateButton.addEventListener(
     "click",
-    openLetter
+    generateLink
 );
+
 
 
 /* =========================================
@@ -883,7 +1238,7 @@ nameInput.addEventListener(
             event.key === "Enter"
         ) {
 
-            openLetter();
+            generateLink();
 
         }
 
@@ -891,8 +1246,9 @@ nameInput.addEventListener(
 );
 
 
+
 /* =========================================
-   REMOVE ERROR WHEN TYPING
+   REMOVE ERROR
 ========================================= */
 
 nameInput.addEventListener(
@@ -908,6 +1264,136 @@ nameInput.addEventListener(
             );
 
         }
+
+    }
+);
+
+
+
+/* =========================================
+   COPY LINK
+========================================= */
+
+copyButton.addEventListener(
+    "click",
+    async function() {
+
+        const link =
+            generatedLink.value;
+
+
+        if (!link) {
+            return;
+        }
+
+
+        try {
+
+            await navigator.clipboard.writeText(
+                link
+            );
+
+            copyButton.textContent =
+                "Copied ✓";
+
+
+            setTimeout(
+                function() {
+
+                    copyButton.textContent =
+                        "Copy";
+
+                },
+                1800
+            );
+
+
+        } catch (error) {
+
+            generatedLink.select();
+
+            document.execCommand(
+                "copy"
+            );
+
+            copyButton.textContent =
+                "Copied ✓";
+
+
+            setTimeout(
+                function() {
+
+                    copyButton.textContent =
+                        "Copy";
+
+                },
+                1800
+            );
+
+        }
+
+    }
+);
+
+
+
+/* =========================================
+   OPEN LETTER
+========================================= */
+
+openButton.addEventListener(
+    "click",
+    function() {
+
+        const link =
+            generatedLink.value;
+
+
+        if (link) {
+
+            window.location.href =
+                link;
+
+        }
+
+    }
+);
+
+
+
+/* =========================================
+   WHATSAPP SHARE
+========================================= */
+
+shareButton.addEventListener(
+    "click",
+    function() {
+
+        const link =
+            generatedLink.value;
+
+
+        if (!link) {
+            return;
+        }
+
+
+        const message =
+            "I made a little surprise for you ✨\n\n" +
+            link;
+
+
+        const whatsappURL =
+            "https://wa.me/?text=" +
+            encodeURIComponent(
+                message
+            );
+
+
+        window.open(
+            whatsappURL,
+            "_blank"
+        );
 
     }
 );
