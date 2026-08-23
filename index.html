@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>A Little Letter ❤️</title>
+
+<link rel="preconnect"
+      href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap"
+      rel="stylesheet">
+
+
+<style>
+
+/* =========================
+   RESET
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    min-height: 100vh;
+
+    overflow-x: hidden;
+
+    color: white;
+
+    font-family:
+        "Playfair Display",
+        Georgia,
+        serif;
+
+    background:
+        #120b13;
+}
+
+
+/* =========================
+   BACKGROUND
+========================= */
+
+.background {
+    position: fixed;
+
+    inset: -20%;
+
+    z-index: -2;
+
+    background:
+
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(255,95,136,.25),
+            transparent 30%
+        ),
+
+        radial-gradient(
+            circle at 80% 70%,
+            rgba(170,90,255,.18),
+            transparent 30%
+        );
+
+    filter: blur(10px);
+
+    animation:
+        backgroundMove
+        8s
+        ease-in-out
+        infinite
+        alternate;
+}
+
+@keyframes backgroundMove {
+
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.12);
+    }
+}
+
+
+/* =========================
+   HEARTS
+========================= */
+
+#hearts {
+    position: fixed;
+
+    inset: 0;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+    z-index: 10;
+}
+
+.heart {
+    position: absolute;
+
+    bottom: -30px;
+
+    color: #ff8fab;
+
+    opacity: 0;
+
+    animation:
+        heartFloat
+        linear
+        forwards;
+
+    filter:
+        drop-shadow(
+            0 0 8px
+            rgba(255,143,171,.5)
+        );
+}
+
+@keyframes heartFloat {
+
+    0% {
+
+        transform:
+            translateY(0)
+            rotate(0deg)
+            scale(.5);
+
+        opacity: 0;
+    }
+
+    15% {
+        opacity: .8;
+    }
+
+    100% {
+
+        transform:
+            translateY(-110vh)
+            rotate(45deg)
+            scale(1.2);
+
+        opacity: 0;
+    }
+}
+
+
+/* =========================
+   MAIN
+========================= */
+
+.container {
+
+    min-height: 100vh;
+
+    width: 100%;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding:
+        20px;
+}
+
+
+/* =========================
+   CARD
+========================= */
+
+.card {
+
+    width:
+        min(520px, 100%);
+
+    padding:
+        45px 30px;
+
+    text-align: center;
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    border-radius:
+        25px;
+
+    background:
+        rgba(255,255,255,.06);
+
+    backdrop-filter:
+        blur(20px);
+
+    box-shadow:
+        0 30px 80px
+        rgba(0,0,0,.4);
+}
+
+
+/* =========================
+   TITLE
+========================= */
+
+.small-heart {
+
+    font-size:
+        35px;
+
+    color:
+        #ff8fab;
+
+    animation:
+        heartbeat
+        1.5s
+        infinite;
+}
+
+@keyframes heartbeat {
+
+    50% {
+
+        transform:
+            scale(1.25);
+
+        text-shadow:
+            0 0 25px
+            rgba(255,143,171,.8);
+    }
+}
+
+.eyebrow {
+
+    margin-top:
+        15px;
+
+    text-transform:
+        uppercase;
+
+    letter-spacing:
+        .2em;
+
+    font-size:
+        10px;
+
+    opacity:
+        .6;
+}
+
+h1 {
+
+    margin-top:
+        15px;
+
+    font-size:
+        clamp(
+            50px,
+            12vw,
+            75px
+        );
+
+    line-height:
+        .9;
+
+    font-weight:
+        500;
+}
+
+h1 span {
+
+    display:
+        block;
+
+    color:
+        #ff8fab;
+
+    font-style:
+        italic;
+}
+
+.description {
+
+    margin-top:
+        25px;
+
+    line-height:
+        1.6;
+
+    opacity:
+        .7;
+
+    font-size:
+        14px;
+}
+
+
+/* =========================
+   INPUT
+========================= */
+
+.input-box {
+
+    margin-top:
+        30px;
+}
+
+.name-input {
+
+    width:
+        100%;
+
+    padding:
+        15px 20px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.2);
+
+    border-radius:
+        30px;
+
+    outline:
+        none;
+
+    background:
+        rgba(255,255,255,.08);
+
+    color:
+        white;
+
+    text-align:
+        center;
+
+    font-size:
+        17px;
+
+    transition:
+        .3s;
+}
+
+.name-input::placeholder {
+
+    color:
+        rgba(255,255,255,.45);
+}
+
+.name-input:focus {
+
+    border-color:
+        #ff8fab;
+
+    box-shadow:
+        0 0 20px
+        rgba(255,143,171,.15);
+}
+
+
+/* =========================
+   GENERATE BUTTON
+========================= */
+
+.generate {
+
+    margin-top:
+        15px;
+
+    width:
+        100%;
+
+    padding:
+        14px 20px;
+
+    border:
+        none;
+
+    border-radius:
+        30px;
+
+    background:
+        #ff6f98;
+
+    color:
+        white;
+
+    font-size:
+        15px;
+
+    font-weight:
+        600;
+
+    cursor:
+        pointer;
+
+    transition:
+        .3s;
+}
+
+.generate:hover {
+
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 10px 30px
+        rgba(255,111,152,.3);
+}
+
+.generate:active {
+
+    transform:
+        scale(.97);
+}
+
+
+/* =========================
+   RESULT
+========================= */
+
+.result {
+
+    display:
+        none;
+
+    margin-top:
+        25px;
+}
+
+.result.show {
+
+    display:
+        block;
+}
+
+.result-title {
+
+    font-size:
+        13px;
+
+    opacity:
+        .65;
+
+    margin-bottom:
+        10px;
+}
+
+.link-box {
+
+    display:
+        flex;
+
+    gap:
+        8px;
+}
+
+.generated-link {
+
+    flex:
+        1;
+
+    min-width:
+        0;
+
+    padding:
+        12px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.15);
+
+    border-radius:
+        20px;
+
+    outline:
+        none;
+
+    background:
+        rgba(255,255,255,.08);
+
+    color:
+        white;
+
+    font-size:
+        12px;
+}
+
+.copy {
+
+    padding:
+        0 18px;
+
+    border:
+        none;
+
+    border-radius:
+        25px;
+
+    background:
+        rgba(255,255,255,.13);
+
+    color:
+        white;
+
+    cursor:
+        pointer;
+
+    transition:
+        .3s;
+
+    white-space:
+        nowrap;
+}
+
+.copy:hover {
+
+    background:
+        rgba(255,255,255,.22);
+}
+
+.open-link {
+
+    display:
+        inline-block;
+
+    margin-top:
+        15px;
+
+    color:
+        #ff8fab;
+
+    text-decoration:
+        none;
+
+    font-size:
+        14px;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+    .container {
+
+        padding:
+            15px;
+    }
+
+    .card {
+
+        padding:
+            35px 20px;
+
+        border-radius:
+            20px;
+    }
+
+    h1 {
+
+        font-size:
+            55px;
+    }
+
+    .description {
+
+        font-size:
+            13px;
+    }
+
+    .link-box {
+
+        flex-direction:
+            column;
+    }
+
+    .copy {
+
+        width:
+            100%;
+
+        padding:
+            12px;
+    }
+}
+
+
+/* Very small phones */
+
+@media (max-width: 360px) {
+
+    .card {
+
+        padding:
+            30px 16px;
+    }
+
+    h1 {
+
+        font-size:
+            48px;
+    }
+
+    .small-heart {
+
+        font-size:
+            28px;
+    }
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="background"></div>
+
+<div id="hearts"></div>
+
+
+<div class="container">
+
+    <div class="card">
+
+
+        <div class="small-heart">
+            ♥
+        </div>
+
+
+        <p class="eyebrow">
+            Create something special
+        </p>
+
+
+        <h1>
+
+            A Little
+
+            <span>
+                Letter
+            </span>
+
+        </h1>
+
+
+        <p class="description">
+
+            Enter their name and create
+            a personal letter link.
+
+        </p>
+
+
+        <div class="input-box">
+
+
+            <input
+                id="nameInput"
+                class="name-input"
+                type="text"
+                maxlength="30"
+                placeholder="Enter their name..."
+                autocomplete="off"
+            >
+
+
+            <button
+                id="generateButton"
+                class="generate"
+            >
+
+                Generate Letter Link ❤️
+
+            </button>
+
+
+        </div>
+
+
+        <div
+            id="result"
+            class="result"
+        >
+
+            <p class="result-title">
+                Your personal link:
+            </p>
+
+
+            <div class="link-box">
+
+
+                <input
+                    id="generatedLink"
+                    class="generated-link"
+                    readonly
+                >
+
+
+                <button
+                    id="copyButton"
+                    class="copy"
+                >
+                    Copy
+                </button>
+
+
+            </div>
+
+
+            <a
+                id="openLink"
+                class="open-link"
+                target="_blank"
+                rel="noopener"
+            >
+
+                Open Letter ↗
+
+            </a>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+
+<script>
+
+/* =========================
+   ELEMENTS
+========================= */
+
+const nameInput =
+    document.getElementById(
+        "nameInput"
+    );
+
+const generateButton =
+    document.getElementById(
+        "generateButton"
+    );
+
+const result =
+    document.getElementById(
+        "result"
+    );
+
+const generatedLink =
+    document.getElementById(
+        "generatedLink"
+    );
+
+const copyButton =
+    document.getElementById(
+        "copyButton"
+    );
+
+const openLink =
+    document.getElementById(
+        "openLink"
+    );
+
+const hearts =
+    document.getElementById(
+        "hearts"
+    );
+
+
+/* =========================
+   GENERATE LINK
+========================= */
+
+function generateLink() {
+
+    const name =
+        nameInput.value.trim();
+
+
+    if (!name) {
+
+        nameInput.focus();
+
+        nameInput.style.borderColor =
+            "#ff6f98";
+
+        setTimeout(() => {
+
+            nameInput.style.borderColor =
+                "rgba(255,255,255,.2)";
+
+        }, 1000);
+
+        return;
+    }
+
+
+    /*
+       Encode the name.
+
+       Example:
+
+       Priya Das
+
+       becomes:
+
+       Priya%20Das
+    */
+
+    const encodedName =
+        encodeURIComponent(name);
+
+
+    /*
+       Find the folder where
+       index.html is located.
+    */
+
+    const baseURL =
+        window.location.href
+            .substring(
+                0,
+                window.location.href.lastIndexOf("/")
+                + 1
+            );
+
+
+    /*
+       Create:
+
+       letter.html?name=Priya
+    */
+
+    const link =
+        baseURL +
+        "letter.html?name=" +
+        encodedName;
+
+
+    generatedLink.value =
+        link;
+
+    openLink.href =
+        link;
+
+
+    result.classList.add(
+        "show"
+    );
+
+
+    heartBurst(20);
+
+}
+
+
+/* =========================
+   BUTTON
+========================= */
+
+generateButton.addEventListener(
+    "click",
+    generateLink
+);
+
+
+/* =========================
+   ENTER
+========================= */
+
+nameInput.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (
+            event.key === "Enter"
+        ) {
+
+            generateLink();
+
+        }
+
+    }
+);
+
+
+/* =========================
+   COPY
+========================= */
+
+copyButton.addEventListener(
+    "click",
+    async function() {
+
+        const link =
+            generatedLink.value;
+
+
+        if (!link) {
+            return;
+        }
+
+
+        try {
+
+            await navigator.clipboard.writeText(
+                link
+            );
+
+        }
+
+        catch {
+
+            generatedLink.select();
+
+            document.execCommand(
+                "copy"
+            );
+
+        }
+
+
+        copyButton.textContent =
+            "Copied ❤️";
+
+
+        setTimeout(
+            function() {
+
+                copyButton.textContent =
+                    "Copy";
+
+            },
+            2000
+        );
+
+    }
+);
+
+
+/* =========================
+   HEART
+========================= */
+
+function createHeart(
+    large = false
+) {
+
+    const heart =
+        document.createElement(
+            "span"
+        );
+
+
+    heart.className =
+        "heart";
+
+
+    heart.textContent =
+        Math.random() > .2
+            ? "♥"
+            : "♡";
+
+
+    heart.style.left =
+        Math.random() * 100 +
+        "%";
+
+
+    heart.style.fontSize =
+
+        (
+            large
+                ? 22 +
+                  Math.random() * 20
+                : 10 +
+                  Math.random() * 15
+        ) +
+        "px";
+
+
+    heart.style.animationDuration =
+
+        5 +
+        Math.random() * 7 +
+        "s";
+
+
+    hearts.appendChild(
+        heart
+    );
+
+
+    setTimeout(
+        function() {
+
+            heart.remove();
+
+        },
+        14000
+    );
+
+}
+
+
+/* =========================
+   HEART BURST
+========================= */
+
+function heartBurst(amount) {
+
+    for (
+        let i = 0;
+        i < amount;
+        i++
+    ) {
+
+        setTimeout(
+            function() {
+
+                createHeart(true);
+
+            },
+            i * 50
+        );
+
+    }
+
+}
+
+
+/* =========================
+   BACKGROUND HEARTS
+========================= */
+
+setInterval(
+    function() {
+
+        if (
+            Math.random() > .25
+        ) {
+
+            createHeart();
+
+        }
+
+    },
+    900
+);
+
+</script>
+
+
+</body>
+
+</html>
