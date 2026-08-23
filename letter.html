@@ -21,1049 +21,1055 @@
           rel="stylesheet">
 
 
-    <style>
+<style>
 
-        /* =========================================
-           RESET
-        ========================================= */
+/* =========================================
+   RESET
+========================================= */
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        html,
-        body {
-            width: 100%;
-            min-height: 100%;
-        }
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+}
 
-        body {
-            min-height: 100vh;
-            overflow: hidden;
+body {
+    min-height: 100vh;
 
-            background: #120b13;
+    overflow: hidden;
 
-            color: white;
+    background: #120b13;
 
-            font-family:
-                "Noto Serif Bengali",
-                serif;
-        }
+    color: white;
 
+    font-family:
+        "Noto Serif Bengali",
+        serif;
+}
 
-        /* =========================================
-           BACKGROUND
-        ========================================= */
 
-        .background {
-            position: fixed;
-            inset: -20%;
+/* =========================================
+   BACKGROUND
+========================================= */
 
-            z-index: -2;
+.background {
 
-            background:
+    position: fixed;
 
-                radial-gradient(
-                    circle at 20% 20%,
-                    rgba(255, 95, 136, .25),
-                    transparent 30%
-                ),
+    inset: -20%;
 
-                radial-gradient(
-                    circle at 80% 70%,
-                    rgba(170, 90, 255, .20),
-                    transparent 30%
-                );
+    z-index: -2;
 
-            filter: blur(10px);
+    background:
 
-            animation:
-                backgroundMove
-                8s
-                ease-in-out
-                infinite
-                alternate;
-        }
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(255, 95, 136, .25),
+            transparent 30%
+        ),
 
+        radial-gradient(
+            circle at 80% 70%,
+            rgba(170, 90, 255, .20),
+            transparent 30%
+        );
 
-        @keyframes backgroundMove {
+    filter: blur(10px);
 
-            from {
-                transform: scale(1);
-            }
+    animation:
+        backgroundMove
+        8s
+        ease-in-out
+        infinite
+        alternate;
+}
 
-            to {
-                transform: scale(1.12);
-            }
 
-        }
+@keyframes backgroundMove {
 
+    from {
+        transform: scale(1);
+    }
 
-        /* =========================================
-           FLOATING HEARTS
-        ========================================= */
+    to {
+        transform: scale(1.12);
+    }
 
-        #hearts {
-            position: fixed;
-            inset: 0;
+}
 
-            overflow: hidden;
 
-            pointer-events: none;
+/* =========================================
+   FLOATING EMOJIS
+========================================= */
 
-            z-index: 100;
-        }
+#floatingEmojis {
 
+    position: fixed;
 
-        .heart {
-            position: absolute;
+    inset: 0;
 
-            bottom: -40px;
+    overflow: hidden;
 
-            color: #ff8fab;
+    pointer-events: none;
 
-            opacity: 0;
+    z-index: 100;
+}
 
-            animation:
-                heartFloat
-                linear
-                forwards;
 
-            filter:
-                drop-shadow(
-                    0 0 10px
-                    rgba(255, 143, 171, .5)
-                );
-        }
+.floating-emoji {
 
+    position: absolute;
 
-        @keyframes heartFloat {
+    bottom: -50px;
 
-            0% {
+    opacity: 0;
 
-                transform:
-                    translateY(0)
-                    rotate(0deg)
-                    scale(.5);
+    animation:
+        emojiFloat
+        linear
+        forwards;
 
-                opacity: 0;
-            }
+    filter:
+        drop-shadow(
+            0 0 8px
+            rgba(255,143,171,.35)
+        );
+}
 
-            15% {
-                opacity: .8;
-            }
 
-            100% {
+@keyframes emojiFloat {
 
-                transform:
-                    translateY(-110vh)
-                    rotate(45deg)
-                    scale(1.2);
+    0% {
 
-                opacity: 0;
-            }
+        transform:
+            translateY(0)
+            rotate(0deg)
+            scale(.7);
 
-        }
+        opacity: 0;
+    }
 
+    15% {
 
-        /* =========================================
-           SCREEN
-        ========================================= */
+        opacity: .8;
+    }
 
-        .screen {
+    100% {
 
-            position: fixed;
+        transform:
+            translateY(-110vh)
+            rotate(25deg)
+            scale(1.1);
 
-            inset: 0;
+        opacity: 0;
+    }
 
-            display: grid;
+}
 
-            place-items: center;
 
-            padding: 15px;
+/* =========================================
+   SCREEN
+========================================= */
 
-            opacity: 0;
+.screen {
 
-            pointer-events: none;
+    position: fixed;
 
-            transform: scale(.97);
+    inset: 0;
 
-            transition:
-                opacity .7s ease,
-                transform .7s ease;
-        }
+    display: grid;
 
+    place-items: center;
 
-        .screen.active {
+    padding: 15px;
 
-            opacity: 1;
+    opacity: 0;
 
-            pointer-events: auto;
+    pointer-events: none;
 
-            transform: scale(1);
-        }
+    transform: scale(.97);
 
+    transition:
+        opacity .7s ease,
+        transform .7s ease;
+}
 
-        /* =========================================
-           INTRO
-        ========================================= */
 
-        .intro {
-            width: 100%;
-            text-align: center;
-        }
+.screen.active {
 
+    opacity: 1;
 
-        .friend-icon {
+    pointer-events: auto;
 
-            font-size: 38px;
+    transform: scale(1);
+}
 
-            margin-bottom: 5px;
 
-            animation:
-                friendFloat
-                2s
-                ease-in-out
-                infinite
-                alternate;
-        }
+/* =========================================
+   INTRO
+========================================= */
 
+.intro {
 
-        @keyframes friendFloat {
+    width: 100%;
 
-            from {
-                transform: translateY(0);
-            }
+    text-align: center;
+}
 
-            to {
-                transform:
-                    translateY(-8px);
-            }
 
-        }
+.friend-icon {
 
+    font-size: 38px;
 
-        .eyebrow {
+    margin-bottom: 5px;
 
-            margin: 12px 0;
+    animation:
+        friendFloat
+        2s
+        ease-in-out
+        infinite
+        alternate;
+}
 
-            text-transform: uppercase;
 
-            letter-spacing: .18em;
+@keyframes friendFloat {
 
-            font-family: Arial, sans-serif;
+    from {
+        transform: translateY(0);
+    }
 
-            font-size: 10px;
+    to {
+        transform: translateY(-8px);
+    }
 
-            opacity: .65;
-        }
+}
 
 
-        h1 {
+.eyebrow {
 
-            font-family:
-                "Caveat",
-                cursive;
+    margin: 12px 0;
 
-            font-size:
-                clamp(
-                    55px,
-                    13vw,
-                    90px
-                );
+    text-transform: uppercase;
 
-            line-height: .85;
+    letter-spacing: .18em;
 
-            font-weight: 500;
-        }
+    font-family: Arial, sans-serif;
 
+    font-size: 10px;
 
-        h1 span {
+    opacity: .65;
+}
 
-            display: block;
 
-            color: #ff8fab;
+h1 {
 
-            font-style: italic;
-        }
+    font-family:
+        "Caveat",
+        cursive;
 
+    font-size:
+        clamp(
+            55px,
+            13vw,
+            90px
+        );
 
-        .subtitle {
+    line-height: .85;
 
-            margin-top: 20px;
+    font-weight: 500;
+}
 
-            opacity: .65;
 
-            font-size: 14px;
-        }
+h1 span {
 
+    display: block;
 
-        /* =========================================
-           ENVELOPE
-        ========================================= */
+    color: #ff8fab;
 
-        .envelope-button {
+    font-style: italic;
+}
 
-            margin-top: 25px;
 
-            padding: 25px;
+.subtitle {
 
-            border: none;
+    margin-top: 20px;
 
-            background: transparent;
+    opacity: .65;
 
-            cursor: pointer;
+    font-size: 14px;
+}
 
-            transition:
-                transform .3s;
-        }
 
+/* =========================================
+   ENVELOPE
+========================================= */
 
-        .envelope-button:hover {
+.envelope-button {
 
-            transform:
-                translateY(-8px)
-                scale(1.03);
-        }
+    margin-top: 25px;
 
+    padding: 25px;
 
-        .envelope {
+    border: none;
 
-            width:
-                min(
-                    390px,
-                    78vw
-                );
+    background: transparent;
 
-            aspect-ratio: 1.52;
+    cursor: pointer;
 
-            position: relative;
+    transition:
+        transform .3s;
+}
 
-            filter:
-                drop-shadow(
-                    0 25px 30px
-                    rgba(0,0,0,.4)
-                );
-        }
 
+.envelope-button:hover {
 
-        .envelope-back {
+    transform:
+        translateY(-8px)
+        scale(1.03);
+}
 
-            position: absolute;
 
-            inset: 0;
+.envelope {
 
-            border-radius: 8px;
+    width:
+        min(
+            390px,
+            78vw
+        );
 
-            background:
-                linear-gradient(
-                    145deg,
-                    #d95378,
-                    #98294f
-                );
-        }
+    aspect-ratio: 1.52;
 
+    position: relative;
 
-        .paper {
+    filter:
+        drop-shadow(
+            0 25px 30px
+            rgba(0,0,0,.4)
+        );
+}
 
-            position: absolute;
 
-            width: 76%;
+.envelope-back {
 
-            height: 82%;
+    position: absolute;
 
-            left: 12%;
+    inset: 0;
 
-            top: -5%;
+    border-radius: 8px;
 
-            background: #fff8ed;
+    background:
+        linear-gradient(
+            145deg,
+            #d95378,
+            #98294f
+        );
+}
 
-            border-radius: 4px;
 
-            box-shadow:
-                0 8px 18px
-                rgba(0,0,0,.2);
+.paper {
 
-            transition:
-                transform .8s
-                cubic-bezier(.2,.8,.2,1);
-        }
+    position: absolute;
 
+    width: 76%;
 
-        .flap {
+    height: 82%;
 
-            position: absolute;
+    left: 12%;
 
-            inset: 0 0 auto;
+    top: -5%;
 
-            height: 65%;
+    background: #fff8ed;
 
-            background:
-                linear-gradient(
-                    145deg,
-                    #ff7899,
-                    #c23e67
-                );
+    border-radius: 4px;
 
-            clip-path:
-                polygon(
-                    0 0,
-                    100% 0,
-                    50% 100%
-                );
+    box-shadow:
+        0 8px 18px
+        rgba(0,0,0,.2);
 
-            transform-origin: top;
+    transition:
+        transform .8s
+        cubic-bezier(.2,.8,.2,1);
+}
 
-            transition:
-                transform .8s
-                cubic-bezier(.2,.8,.2,1);
 
-            z-index: 4;
-        }
+.flap {
 
+    position: absolute;
 
-        .pocket {
+    inset: 0 0 auto;
 
-            position: absolute;
+    height: 65%;
 
-            inset: auto 0 0;
+    background:
+        linear-gradient(
+            145deg,
+            #ff7899,
+            #c23e67
+        );
 
-            height: 72%;
+    clip-path:
+        polygon(
+            0 0,
+            100% 0,
+            50% 100%
+        );
 
-            background:
-                linear-gradient(
-                    160deg,
-                    #d95378,
-                    #98294f
-                );
+    transform-origin: top;
 
-            clip-path:
-                polygon(
-                    0 0,
-                    50% 52%,
-                    100% 0,
-                    100% 100%,
-                    0 100%
-                );
+    transition:
+        transform .8s
+        cubic-bezier(.2,.8,.2,1);
 
-            z-index: 5;
-        }
+    z-index: 4;
+}
 
 
-        .seal {
+.pocket {
 
-            position: absolute;
+    position: absolute;
 
-            left: 50%;
+    inset: auto 0 0;
 
-            top: 53%;
+    height: 72%;
 
-            transform:
-                translate(-50%, -50%);
+    background:
+        linear-gradient(
+            160deg,
+            #d95378,
+            #98294f
+        );
 
-            width: 55px;
+    clip-path:
+        polygon(
+            0 0,
+            50% 52%,
+            100% 0,
+            100% 100%,
+            0 100%
+        );
 
-            height: 55px;
+    z-index: 5;
+}
 
-            display: grid;
 
-            place-items: center;
+.seal {
 
-            border-radius: 50%;
+    position: absolute;
 
-            background: #8f2347;
+    left: 50%;
 
-            color: #ffd8e1;
+    top: 53%;
 
-            font-size: 22px;
+    transform:
+        translate(-50%, -50%);
 
-            z-index: 6;
+    width: 55px;
 
-            transition: opacity .3s;
-        }
+    height: 55px;
 
+    display: grid;
 
-        .opening .flap {
+    place-items: center;
 
-            transform: rotateX(180deg);
+    border-radius: 50%;
 
-            z-index: 2;
-        }
+    background: #8f2347;
 
+    color: #ffd8e1;
 
-        .opening .paper {
+    font-size: 22px;
 
-            transform:
-                translateY(-100%);
-        }
+    z-index: 6;
 
+    transition: opacity .3s;
+}
 
-        .opening .seal {
 
-            opacity: 0;
-        }
+.opening .flap {
 
+    transform: rotateX(180deg);
 
-        .click-text {
+    z-index: 2;
+}
 
-            color: #ff8fab;
 
-            font-family:
-                "Caveat",
-                cursive;
+.opening .paper {
 
-            font-size: 22px;
-        }
+    transform:
+        translateY(-100%);
+}
 
 
-        /* =========================================
-           LETTER CONTAINER
-        ========================================= */
+.opening .seal {
 
-        .letter-container {
+    opacity: 0;
+}
 
-            width:
-                min(
-                    820px,
-                    100%
-                );
 
-            max-height: 94vh;
+.click-text {
 
-            overflow-y: auto;
+    color: #ff8fab;
 
-            padding: 8px;
-        }
+    font-family:
+        "Caveat",
+        cursive;
 
+    font-size: 22px;
+}
 
-        /* =========================================
-           LETTER PAPER
-        ========================================= */
 
-        .letter-card {
+/* =========================================
+   LETTER CONTAINER
+========================================= */
 
-            position: relative;
+.letter-container {
 
-            color: #503740;
+    width:
+        min(
+            820px,
+            100%
+        );
 
-            background:
+    max-height: 94vh;
 
-                radial-gradient(
-                    rgba(90,55,60,.07) .8px,
-                    transparent .8px
-                )
-                0 0 / 7px 7px,
+    overflow-y: auto;
 
-                #fff8ed;
+    padding: 8px;
+}
 
-            padding:
-                clamp(
-                    30px,
-                    5vw,
-                    65px
-                );
 
-            border-radius: 4px;
+/* =========================================
+   LETTER PAPER
+========================================= */
 
-            box-shadow:
-                0 30px 80px
-                rgba(0,0,0,.45);
+.letter-card {
 
-            transform: rotate(-.4deg);
-        }
+    position: relative;
 
+    color: #503740;
 
-        .letter-card::before {
+    background:
 
-            content: "";
+        radial-gradient(
+            rgba(90,55,60,.07) .8px,
+            transparent .8px
+        )
+        0 0 / 7px 7px,
 
-            position: absolute;
+        #fff8ed;
 
-            inset: 10px;
+    padding:
+        clamp(
+            30px,
+            5vw,
+            65px
+        );
 
-            border:
-                1px solid
-                rgba(120,65,75,.18);
+    border-radius: 4px;
 
-            pointer-events: none;
-        }
+    box-shadow:
+        0 30px 80px
+        rgba(0,0,0,.45);
 
+    transform: rotate(-.4deg);
+}
 
-        /* =========================================
-           LETTER HEADER
-        ========================================= */
 
-        .letter-header {
+.letter-card::before {
 
-            display: flex;
+    content: "";
 
-            justify-content: space-between;
+    position: absolute;
 
-            align-items: center;
+    inset: 10px;
 
-            margin-bottom: 30px;
+    border:
+        1px solid
+        rgba(120,65,75,.18);
 
-            font-family:
-                "Caveat",
-                cursive;
+    pointer-events: none;
+}
 
-            font-size: 18px;
 
-            opacity: .7;
-        }
+/* =========================================
+   LETTER HEADER
+========================================= */
 
+.letter-header {
 
-        /* =========================================
-           MUSIC BUTTON
-        ========================================= */
+    display: flex;
 
-        #musicButton {
+    justify-content: space-between;
 
-            border:
-                1px solid
-                rgba(100,50,60,.2);
+    align-items: center;
 
-            background:
-                rgba(255,255,255,.4);
+    margin-bottom: 30px;
 
-            color: #503740;
+    font-family:
+        "Caveat",
+        cursive;
 
-            padding:
-                7px 14px;
+    font-size: 18px;
 
-            border-radius: 30px;
+    opacity: .7;
+}
 
-            cursor: pointer;
-        }
 
+/* =========================================
+   MUSIC BUTTON
+========================================= */
 
-        #musicButton.playing {
+#musicButton {
 
-            animation:
-                musicPulse
-                1.2s
-                infinite
-                alternate;
-        }
+    border:
+        1px solid
+        rgba(100,50,60,.2);
 
+    background:
+        rgba(255,255,255,.4);
 
-        @keyframes musicPulse {
+    color: #503740;
 
-            to {
+    padding:
+        7px 14px;
 
-                transform: scale(1.06);
+    border-radius: 30px;
 
-                box-shadow:
-                    0 0 15px
-                    rgba(255,95,136,.3);
-            }
+    cursor: pointer;
+}
 
-        }
 
+#musicButton.playing {
 
-        /* =========================================
-           LETTER
-        ========================================= */
+    animation:
+        musicPulse
+        1.2s
+        infinite
+        alternate;
+}
 
-        .letter {
 
-            max-width: 680px;
+@keyframes musicPulse {
 
-            margin: auto;
+    to {
 
-            font-family:
-                "Noto Serif Bengali",
-                serif;
+        transform: scale(1.06);
 
-            font-size:
-                clamp(
-                    19px,
-                    3vw,
-                    25px
-                );
+        box-shadow:
+            0 0 15px
+            rgba(255,95,136,.3);
+    }
 
-            line-height: 1.9;
-        }
+}
 
 
-        .letter p {
+/* =========================================
+   LETTER
+========================================= */
 
-            margin-bottom: 22px;
-        }
+.letter {
 
+    max-width: 680px;
 
-        .dear {
+    margin: auto;
 
-            font-family:
-                "Caveat",
-                "Noto Serif Bengali",
-                cursive;
+    font-family:
+        "Noto Serif Bengali",
+        serif;
 
-            font-size:
-                clamp(
-                    32px,
-                    5vw,
-                    42px
-                );
+    font-size:
+        clamp(
+            19px,
+            3vw,
+            25px
+        );
 
-            line-height: 1.3;
-        }
+    line-height: 1.9;
+}
 
 
-        .dear span {
+.letter p {
 
-            color: #9d425d;
-        }
+    margin-bottom: 22px;
+}
 
 
-        .letter em {
+.dear {
 
-            font-family:
-                "Caveat",
-                cursive;
+    font-family:
+        "Caveat",
+        "Noto Serif Bengali",
+        cursive;
 
-            font-size: 1.1em;
+    font-size:
+        clamp(
+            32px,
+            5vw,
+            42px
+        );
 
-            color: #9d425d;
+    line-height: 1.3;
+}
 
-            font-weight: 600;
-        }
 
+.dear span {
 
-        .signature {
+    color: #9d425d;
+}
 
-            margin-top: 35px;
 
-            text-align: right;
+.letter em {
 
-            font-weight: 600;
-        }
+    font-family:
+        "Caveat",
+        cursive;
 
+    font-size: 1.1em;
 
-        .signature span {
+    color: #9d425d;
 
-            color: #9d425d;
+    font-weight: 600;
+}
 
-            font-weight: 700;
-        }
 
+.signature {
 
-        /* =========================================
-           BUTTON
-        ========================================= */
+    margin-top: 35px;
 
-        .letter-footer {
+    text-align: right;
 
-            text-align: center;
+    font-weight: 600;
+}
 
-            margin-top: 30px;
-        }
 
+.signature span {
 
-        .primary-button {
+    color: #9d425d;
 
-            border: none;
+    font-weight: 700;
+}
 
-            padding:
-                13px 22px;
 
-            border-radius: 999px;
+/* =========================================
+   BUTTON
+========================================= */
 
-            color: white;
+.letter-footer {
 
-            background: #b83d62;
+    text-align: center;
 
-            cursor: pointer;
+    margin-top: 30px;
+}
 
-            box-shadow:
-                0 8px 20px
-                rgba(130,35,70,.3);
 
-            transition: .25s;
+.primary-button {
 
-            font-family:
-                "Noto Serif Bengali",
-                serif;
-        }
+    border: none;
 
+    padding:
+        13px 22px;
 
-        .primary-button:hover {
+    border-radius: 999px;
 
-            transform:
-                translateY(-3px);
-        }
+    color: white;
 
+    background: #b83d62;
 
-        /* =========================================
-           SURPRISE
-        ========================================= */
+    cursor: pointer;
 
-        .surprise {
+    box-shadow:
+        0 8px 20px
+        rgba(130,35,70,.3);
 
-            width:
-                min(
-                    680px,
-                    100%
-                );
+    transition: .25s;
 
-            text-align: center;
-        }
+    font-family:
+        "Noto Serif Bengali",
+        serif;
+}
 
 
-        .sparkle {
+.primary-button:hover {
 
-            color: #ff8fab;
+    transform:
+        translateY(-3px);
+}
 
-            font-size: 40px;
 
-            animation:
-                spin
-                6s
-                linear
-                infinite;
-        }
+/* =========================================
+   FINAL SURPRISE
+========================================= */
 
+.surprise {
 
-        @keyframes spin {
+    width:
+        min(
+            680px,
+            100%
+        );
 
-            to {
-                transform: rotate(360deg);
-            }
+    text-align: center;
+}
 
-        }
 
+.sparkle {
 
-        h2 {
+    color: #ff8fab;
 
-            font-family:
-                "Caveat",
-                cursive;
+    font-size: 40px;
 
-            font-size:
-                clamp(
-                    50px,
-                    12vw,
-                    90px
-                );
+    animation:
+        spin
+        6s
+        linear
+        infinite;
+}
 
-            line-height: .9;
 
-            font-weight: 500;
-        }
+@keyframes spin {
 
+    to {
+        transform: rotate(360deg);
+    }
 
-        h2 span {
+}
 
-            color: #ff8fab;
 
-            font-style: italic;
-        }
+h2 {
 
+    font-family:
+        "Caveat",
+        cursive;
 
-        .surprise-card {
+    font-size:
+        clamp(
+            50px,
+            12vw,
+            90px
+        );
 
-            width:
-                min(
-                    520px,
-                    100%
-                );
+    line-height: .9;
 
-            margin:
-                35px auto;
+    font-weight: 500;
+}
 
-            padding:
-                40px 25px;
 
-            border:
-                1px solid
-                rgba(255,255,255,.12);
+h2 span {
 
-            background:
-                rgba(255,255,255,.05);
+    color: #ff8fab;
 
-            backdrop-filter: blur(16px);
+    font-style: italic;
+}
 
-            border-radius: 22px;
 
-            box-shadow:
-                0 25px 80px
-                rgba(0,0,0,.3);
-        }
+.surprise-card {
 
+    width:
+        min(
+            520px,
+            100%
+        );
 
-        .big-icon {
+    margin:
+        35px auto;
 
-            font-size: 55px;
+    padding:
+        40px 25px;
 
-            animation:
-                friendBounce
-                1.5s
-                infinite;
-        }
+    border:
+        1px solid
+        rgba(255,255,255,.12);
 
+    background:
+        rgba(255,255,255,.05);
 
-        @keyframes friendBounce {
+    backdrop-filter: blur(16px);
 
-            50% {
+    border-radius: 22px;
 
-                transform:
-                    translateY(-10px)
-                    rotate(5deg);
-            }
+    box-shadow:
+        0 25px 80px
+        rgba(0,0,0,.3);
+}
 
-        }
 
+.big-icon {
 
-        .surprise-card p {
+    font-size: 55px;
 
-            margin-top: 18px;
+    animation:
+        friendBounce
+        1.5s
+        infinite;
+}
 
-            font-family:
-                "Noto Serif Bengali",
-                serif;
 
-            font-size: 22px;
+@keyframes friendBounce {
 
-            line-height: 1.8;
-        }
+    50% {
 
+        transform:
+            translateY(-10px)
+            rotate(5deg);
+    }
 
-        .ghost-button {
+}
 
-            padding:
-                12px 22px;
 
-            border:
-                1px solid
-                rgba(255,255,255,.18);
+.surprise-card p {
 
-            border-radius: 999px;
+    margin-top: 18px;
 
-            background: transparent;
+    font-family:
+        "Noto Serif Bengali",
+        serif;
 
-            color:
-                rgba(255,255,255,.7);
+    font-size: 22px;
 
-            cursor: pointer;
-        }
+    line-height: 1.8;
+}
 
 
-        /* =========================================
-           MOBILE
-        ========================================= */
+.ghost-button {
 
-        @media (max-width: 600px) {
+    padding:
+        12px 22px;
 
-            .screen {
-                padding: 10px;
-            }
+    border:
+        1px solid
+        rgba(255,255,255,.18);
 
+    border-radius: 999px;
 
-            .letter-container {
+    background: transparent;
 
-                max-height: 97vh;
+    color:
+        rgba(255,255,255,.7);
 
-                padding: 4px;
-            }
+    cursor: pointer;
+}
 
 
-            .letter-card {
+/* =========================================
+   MOBILE
+========================================= */
 
-                padding:
-                    28px 19px;
-            }
+@media (max-width: 600px) {
 
+    .screen {
+        padding: 10px;
+    }
 
-            .letter-card::before {
 
-                inset: 7px;
-            }
+    .letter-container {
 
+        max-height: 97vh;
 
-            .letter {
+        padding: 4px;
+    }
 
-                font-size: 18px;
 
-                line-height: 1.85;
-            }
+    .letter-card {
 
+        padding:
+            28px 19px;
+    }
 
-            .dear {
 
-                font-size: 34px;
-            }
+    .letter-card::before {
 
+        inset: 7px;
+    }
 
-            .letter p {
 
-                margin-bottom: 19px;
-            }
+    .letter {
 
+        font-size: 18px;
 
-            .letter-header {
+        line-height: 1.85;
+    }
 
-                margin-bottom: 20px;
 
-                font-size: 15px;
-            }
+    .dear {
 
+        font-size: 34px;
+    }
 
-            .signature {
 
-                text-align: left;
+    .letter p {
 
-                margin-top: 25px;
-            }
+        margin-bottom: 19px;
+    }
 
 
-            .surprise-card {
+    .letter-header {
 
-                padding:
-                    30px 18px;
-            }
+        margin-bottom: 20px;
 
+        font-size: 15px;
+    }
 
-            .surprise-card p {
 
-                font-size: 19px;
-            }
+    .signature {
 
-        }
+        text-align: left;
 
+        margin-top: 25px;
+    }
 
-        /* =========================================
-           SMALL PHONE
-        ========================================= */
 
-        @media (max-width: 360px) {
+    .surprise-card {
 
-            h1 {
-                font-size: 50px;
-            }
+        padding:
+            30px 18px;
+    }
 
 
-            .envelope {
-                width: 75vw;
-            }
+    .surprise-card p {
 
+        font-size: 19px;
+    }
 
-            .letter {
+}
 
-                font-size: 17px;
 
-                line-height: 1.8;
-            }
+/* =========================================
+   SMALL PHONE
+========================================= */
 
+@media (max-width: 360px) {
 
-            .dear {
-                font-size: 31px;
-            }
+    h1 {
+        font-size: 50px;
+    }
 
-        }
 
-    </style>
+    .envelope {
+        width: 75vw;
+    }
+
+
+    .letter {
+
+        font-size: 17px;
+
+        line-height: 1.8;
+    }
+
+
+    .dear {
+        font-size: 31px;
+    }
+
+}
+
+</style>
 
 </head>
 
@@ -1071,764 +1077,759 @@
 <body>
 
 
-    <!-- Background -->
-    <div class="background"></div>
+<!-- Background -->
+<div class="background"></div>
 
 
-    <!-- Floating Hearts -->
-    <div id="hearts"></div>
+<!-- Floating Emojis -->
+<div id="floatingEmojis"></div>
 
 
-    <!-- =========================================
-         FIRST SCREEN
-    ========================================== -->
+<!-- =========================================
+     FIRST SCREEN
+========================================= -->
 
-    <section
-        id="envelopeScreen"
-        class="screen active"
-    >
+<section
+    id="envelopeScreen"
+    class="screen active"
+>
 
-        <div class="intro">
-
-
-            <div class="friend-icon">
-                🤝
-            </div>
+    <div class="intro">
 
 
-            <p class="eyebrow">
-                A little message for a special friend
-            </p>
+        <div class="friend-icon">
+            🤝
+        </div>
 
 
-            <h1>
-
-                A Letter
-
-                <span>
-                    For My Best Friend
-                </span>
-
-            </h1>
+        <p class="eyebrow">
+            A little message for a special friend
+        </p>
 
 
-            <p class="subtitle">
+        <h1>
 
-                কিছু কথা বলা হয় না...
-                লিখে রাখতে হয়।
+            A Letter
 
-            </p>
+            <span>
+                For My Best Friend
+            </span>
 
-
-            <!-- Envelope -->
-
-            <button
-                id="openEnvelope"
-                class="envelope-button"
-            >
-
-                <div class="envelope">
+        </h1>
 
 
-                    <div
-                        class="envelope-back">
-                    </div>
+        <p class="subtitle">
+
+            কিছু কথা বলা হয় না...
+            লিখে রাখতে হয়।
+
+        </p>
 
 
-                    <div
-                        class="paper">
-                    </div>
+        <!-- Envelope -->
+
+        <button
+            id="openEnvelope"
+            class="envelope-button"
+        >
+
+            <div class="envelope">
 
 
-                    <div
-                        class="flap">
-                    </div>
+                <div
+                    class="envelope-back">
+                </div>
 
 
-                    <div
-                        class="pocket">
-                    </div>
+                <div
+                    class="paper">
+                </div>
 
 
-                    <div
-                        class="seal">
+                <div
+                    class="flap">
+                </div>
 
-                        ★
 
-                    </div>
+                <div
+                    class="pocket">
+                </div>
 
+
+                <div
+                    class="seal">
+
+                    ★
 
                 </div>
 
-            </button>
+
+            </div>
+
+        </button>
 
 
-            <p class="click-text">
-                Open the letter
-            </p>
+        <p class="click-text">
+            Open the letter
+        </p>
 
 
-        </div>
+    </div>
 
-    </section>
-
-
-
-    <!-- =========================================
-         LETTER SCREEN
-    ========================================== -->
-
-    <section
-        id="letterScreen"
-        class="screen"
-    >
-
-        <div class="letter-container">
+</section>
 
 
-            <div class="letter-card">
+
+<!-- =========================================
+     LETTER SCREEN
+========================================= -->
+
+<section
+    id="letterScreen"
+    class="screen"
+>
+
+    <div class="letter-container">
 
 
-                <div class="letter-header">
+        <div class="letter-card">
 
+
+            <div class="letter-header">
+
+
+                <span>
+                    আমার Best Friend-এর জন্য
+                </span>
+
+
+                <button
+                    id="musicButton"
+                >
+
+                    ♫
 
                     <span>
-                        আমার Best Friend-এর জন্য
+                        Music
                     </span>
 
-
-                    <button
-                        id="musicButton"
-                    >
-
-                        ♫
-
-                        <span>
-                            Music
-                        </span>
-
-                    </button>
-
-
-                </div>
-
-
-
-                <!-- =================================
-                     YOUR LETTER
-                ================================== -->
-
-                <article class="letter">
-
-
-                    <p class="dear">
-
-                        Dear
-
-                        <span id="personName">
-                            Member
-                        </span>,
-
-                    </p>
-
-
-                    <p>
-
-                        জীবনে সব দিন একরকম যায় না।
-                        কখনো আমরা খুব ভালো থাকি,
-                        আবার কখনো মনে হয় সবকিছু কঠিন হয়ে গেছে।
-                        কিন্তু মনে রাখিস—
-                        খারাপ সময় কখনো চিরদিন থাকে না।
-
-                    </p>
-
-
-                    <p>
-
-                        তুই যতবার পড়ে যাবি,
-                        ততবার উঠে দাঁড়াবি।
-                        সবাই তোর ওপর বিশ্বাস না করলেও,
-                        নিজের ওপর বিশ্বাসটা কখনো হারাবি না।
-                        কারণ তোর ভেতরে এমন একটা শক্তি আছে,
-                        যেটা হয়তো তুই নিজেই এখনো
-                        পুরোপুরি বুঝতে পারিস না।
-
-                    </p>
-
-
-                    <p>
-
-                        জীবনে সফল হতে সময় লাগতে পারে,
-                        অনেক বাধা আসতে পারে,
-                        অনেক মানুষ তোকে নিরুৎসাহিত করতে পারে।
-                        কিন্তু তুই থামবি না।
-                        ধীরে এগোলেও এগিয়ে যাবি।
-                        কারণ
-
-                        <em>
-                            slow progress is still progress.
-                        </em>
-
-                        🌱
-
-                    </p>
-
-
-                    <p>
-
-                        আর একটা কথা মনে রাখিস—
-                        তুই একা নস।
-                        ভালো সময়ে যেমন আমি তোর পাশে থাকব,
-                        খারাপ সময়েও তোর পাশে থাকার চেষ্টা করব।
-                        যখন আমার group member হয়েছিস,
-                        তখন তোর problem আমার problem।
-
-                    </p>
-
-
-                    <p>
-
-                        তাই নিজের ওপর বিশ্বাস রাখ,
-                        স্বপ্ন দেখ,
-                        কঠিন পরিশ্রম কর
-                        আর নিজের মতো করে এগিয়ে চল।
-
-                    </p>
-
-
-                    <p class="signature">
-
-                        তোর Group Members
-
-                        <br>
-
-                        <span>
-                            সবসময় পাশে আছে।
-                        </span>
-
-                    </p>
-
-
-                </article>
-
-
-
-                <!-- Next Button -->
-
-                <div class="letter-footer">
-
-
-                    <button
-                        id="surpriseButton"
-                        class="primary-button"
-                    >
-
-                        There's one more message... ✨
-
-                    </button>
-
-
-                </div>
+                </button>
 
 
             </div>
 
-        </div>
-
-    </section>
 
 
-
-    <!-- =========================================
-         FINAL SURPRISE
-    ========================================== -->
-
-    <section
-        id="surpriseScreen"
-        class="screen"
-    >
-
-        <div class="surprise">
+            <article class="letter">
 
 
-            <div class="sparkle">
-                ✦
-            </div>
+                <p class="dear">
 
+                    Dear
 
-            <p class="eyebrow">
-                One last message
-            </p>
-
-
-            <h2>
-
-                Best Friends
-
-                <span>
-                    Forever.
-                </span>
-
-            </h2>
-
-
-            <div class="surprise-card">
-
-
-                <div class="big-icon">
-                    🤝
-                </div>
-
-
-                <p>
-
-                    <span id="surpriseName">
-                        Friend
+                    <span id="personName">
+                        Member
                     </span>,
-
-                    জীবন যতই বদলে যাক,
-                    আমাদের বন্ধুত্বের
-                    সুন্দর স্মৃতিগুলো
-                    সবসময় মনে থাকবে।
-
-                    ভালো থাকিস,
-                    নিজের স্বপ্ন পূরণ করিস
-                    আর সবসময় নিজের মতো থাকিস।
-
-                    <br>
-                    <br>
-
-                    তোর Best Friend-এর
-                    পক্ষ থেকে —
-
-                    <br>
-
-                    <strong>
-                        সবসময় পাশে আছি।
-                    </strong>
 
                 </p>
 
 
+                <p>
+
+                    জীবনে সব দিন একরকম যায় না।
+                    কখনো আমরা খুব ভালো থাকি,
+                    আবার কখনো মনে হয় সবকিছু কঠিন হয়ে গেছে।
+                    কিন্তু মনে রাখিস—
+                    খারাপ সময় কখনো চিরদিন থাকে না।
+
+                </p>
+
+
+                <p>
+
+                    তুই যতবার পড়ে যাবি,
+                    ততবার উঠে দাঁড়াবি।
+                    সবাই তোর ওপর বিশ্বাস না করলেও,
+                    নিজের ওপর বিশ্বাসটা কখনো হারাবি না।
+                    কারণ তোর ভেতরে এমন একটা শক্তি আছে,
+                    যেটা হয়তো তুই নিজেই এখনো
+                    পুরোপুরি বুঝতে পারিস না।
+
+                </p>
+
+
+                <p>
+
+                    জীবনে সফল হতে সময় লাগতে পারে,
+                    অনেক বাধা আসতে পারে,
+                    অনেক মানুষ তোকে নিরুৎসাহিত করতে পারে।
+                    কিন্তু তুই থামবি না।
+                    ধীরে এগোলেও এগিয়ে যাবি।
+                    কারণ
+
+                    <em>
+                        slow progress is still progress.
+                    </em>
+
+                    🌱
+
+                </p>
+
+
+                <p>
+
+                    আর একটা কথা মনে রাখিস—
+                    তুই একা নস।
+                    ভালো সময়ে যেমন আমি তোর পাশে থাকব,
+                    খারাপ সময়েও তোর পাশে থাকার চেষ্টা করব।
+                    যখন আমার group member হয়েছিস,
+                    তখন তোর problem আমার problem।
+
+                </p>
+
+
+                <p>
+
+                    তাই নিজের ওপর বিশ্বাস রাখ,
+                    স্বপ্ন দেখ,
+                    কঠিন পরিশ্রম কর
+                    আর নিজের মতো করে এগিয়ে চল।
+
+                </p>
+
+
+                <p class="signature">
+
+                    তোর Group Members
+
+                    <br>
+
+                    <span>
+                        সবসময় পাশে আছে।
+                    </span>
+
+                </p>
+
+
+            </article>
+
+
+
+            <div class="letter-footer">
+
+
+                <button
+                    id="surpriseButton"
+                    class="primary-button"
+                >
+
+                    There's one more message... ✨
+
+                </button>
+
+
             </div>
-
-
-            <button
-                id="againButton"
-                class="ghost-button"
-            >
-
-                Read the letter again ↺
-
-            </button>
 
 
         </div>
 
-    </section>
+    </div>
+
+</section>
 
 
 
-    <!-- =========================================
-         MUSIC
-    ========================================== -->
+<!-- =========================================
+     FINAL SURPRISE
+========================================= -->
 
-    <audio
-        id="backgroundMusic"
-        loop
-    ></audio>
+<section
+    id="surpriseScreen"
+    class="screen"
+>
 
-
-
-    <script>
+    <div class="surprise">
 
 
-        /* =========================================
-           GET NAME FROM URL
-        ========================================== */
-
-        const params =
-            new URLSearchParams(
-                window.location.search
-            );
+        <div class="sparkle">
+            ✦
+        </div>
 
 
-        const urlName =
-            params.get("name");
+        <p class="eyebrow">
+            One last message
+        </p>
 
 
-        const personName =
-            urlName
-                ? urlName
-                : "Member";
+        <h2>
+
+            Best Friends
+
+            <span>
+                Forever.
+            </span>
+
+        </h2>
 
 
-        document.getElementById(
-            "personName"
-        ).textContent =
-            personName;
+        <div class="surprise-card">
 
 
-        document.getElementById(
-            "surpriseName"
-        ).textContent =
-            personName;
+            <div class="big-icon">
+                🤝
+            </div>
 
 
+            <p>
 
-        /* =========================================
-           ELEMENTS
-        ========================================== */
+                <span id="surpriseName">
+                    Friend
+                </span>,
 
-        const envelopeButton =
-            document.getElementById(
-                "openEnvelope"
-            );
+                জীবন যতই বদলে যাক,
+                আমাদের বন্ধুত্বের
+                সুন্দর স্মৃতিগুলো
+                সবসময় মনে থাকবে।
 
+                ভালো থাকিস,
+                নিজের স্বপ্ন পূরণ করিস
+                আর সবসময় নিজের মতো থাকিস।
 
-        const envelopeScreen =
-            document.getElementById(
-                "envelopeScreen"
-            );
+                <br>
+                <br>
 
+                তোর Best Friend-এর
+                পক্ষ থেকে —
 
-        const letterScreen =
-            document.getElementById(
-                "letterScreen"
-            );
+                <br>
 
+                <strong>
+                    সবসময় পাশে আছি।
+                </strong>
 
-        const surpriseScreen =
-            document.getElementById(
-                "surpriseScreen"
-            );
-
-
-        const surpriseButton =
-            document.getElementById(
-                "surpriseButton"
-            );
+            </p>
 
 
-        const againButton =
-            document.getElementById(
-                "againButton"
-            );
+        </div>
 
 
-        const musicButton =
-            document.getElementById(
-                "musicButton"
-            );
+        <button
+            id="againButton"
+            class="ghost-button"
+        >
+
+            Read the letter again ↺
+
+        </button>
 
 
-        const music =
-            document.getElementById(
-                "backgroundMusic"
-            );
+    </div>
 
-
-        const hearts =
-            document.getElementById(
-                "hearts"
-            );
+</section>
 
 
 
-        /* =========================================
-           CHANGE SCREEN
-        ========================================== */
+<!-- =========================================
+     MUSIC
+========================================= -->
 
-        function showScreen(screen) {
-
-            envelopeScreen.classList.remove(
-                "active"
-            );
-
-
-            letterScreen.classList.remove(
-                "active"
-            );
+<audio
+    id="backgroundMusic"
+    loop
+></audio>
 
 
-            surpriseScreen.classList.remove(
-                "active"
-            );
+
+<script>
 
 
-            screen.classList.add(
-                "active"
-            );
+/* =========================================
+   NAME FROM URL
+========================================= */
 
+const params =
+    new URLSearchParams(
+        window.location.search
+    );
+
+
+const urlName =
+    params.get("name");
+
+
+const personName =
+    urlName
+        ? urlName
+        : "Member";
+
+
+document.getElementById(
+    "personName"
+).textContent =
+    personName;
+
+
+document.getElementById(
+    "surpriseName"
+).textContent =
+    personName;
+
+
+
+/* =========================================
+   ELEMENTS
+========================================= */
+
+const envelopeButton =
+    document.getElementById(
+        "openEnvelope"
+    );
+
+
+const envelopeScreen =
+    document.getElementById(
+        "envelopeScreen"
+    );
+
+
+const letterScreen =
+    document.getElementById(
+        "letterScreen"
+    );
+
+
+const surpriseScreen =
+    document.getElementById(
+        "surpriseScreen"
+    );
+
+
+const surpriseButton =
+    document.getElementById(
+        "surpriseButton"
+    );
+
+
+const againButton =
+    document.getElementById(
+        "againButton"
+    );
+
+
+const musicButton =
+    document.getElementById(
+        "musicButton"
+    );
+
+
+const music =
+    document.getElementById(
+        "backgroundMusic"
+    );
+
+
+const floatingEmojis =
+    document.getElementById(
+        "floatingEmojis"
+    );
+
+
+
+/* =========================================
+   SCREEN CHANGE
+========================================= */
+
+function showScreen(screen) {
+
+    envelopeScreen.classList.remove(
+        "active"
+    );
+
+    letterScreen.classList.remove(
+        "active"
+    );
+
+    surpriseScreen.classList.remove(
+        "active"
+    );
+
+    screen.classList.add(
+        "active"
+    );
+}
+
+
+
+/* =========================================
+   OPEN ENVELOPE
+========================================= */
+
+envelopeButton.addEventListener(
+    "click",
+    function() {
+
+        if (
+            envelopeButton.classList.contains(
+                "opening"
+            )
+        ) {
+
+            return;
         }
 
 
-
-        /* =========================================
-           OPEN ENVELOPE
-        ========================================== */
-
-        envelopeButton.addEventListener(
-            "click",
-            function() {
-
-
-                if (
-                    envelopeButton.classList.contains(
-                        "opening"
-                    )
-                ) {
-                    return;
-                }
-
-
-                envelopeButton.classList.add(
-                    "opening"
-                );
-
-
-                heartBurst(30);
-
-
-                setTimeout(
-                    function() {
-
-                        showScreen(
-                            letterScreen
-                        );
-
-                    },
-                    1100
-                );
-
-            }
+        envelopeButton.classList.add(
+            "opening"
         );
 
 
-
-        /* =========================================
-           MUSIC
-        ========================================== */
-
-        musicButton.addEventListener(
-            "click",
-            async function() {
+        createEmojiBurst(15);
 
 
-                if (!music.src) {
-
-                    music.src =
-                        "music.mp3";
-
-                }
-
-
-                if (music.paused) {
-
-                    try {
-
-                        await music.play();
-
-
-                        musicButton.classList.add(
-                            "playing"
-                        );
-
-
-                        musicButton.querySelector(
-                            "span"
-                        ).textContent =
-                            "Playing";
-
-
-                    } catch (error) {
-
-                        alert(
-                            "music.mp3 ফাইলটি letter.html-এর একই folder-এ রাখো।"
-                        );
-
-                    }
-
-                } else {
-
-                    music.pause();
-
-
-                    musicButton.classList.remove(
-                        "playing"
-                    );
-
-
-                    musicButton.querySelector(
-                        "span"
-                    ).textContent =
-                        "Music";
-
-                }
-
-            }
-        );
-
-
-
-        /* =========================================
-           FINAL SURPRISE
-        ========================================== */
-
-        surpriseButton.addEventListener(
-            "click",
-            function() {
-
-
-                showScreen(
-                    surpriseScreen
-                );
-
-
-                heartBurst(70);
-
-            }
-        );
-
-
-
-        /* =========================================
-           READ AGAIN
-        ========================================== */
-
-        againButton.addEventListener(
-            "click",
+        setTimeout(
             function() {
 
                 showScreen(
                     letterScreen
                 );
 
+            },
+            1100
+        );
+
+    }
+);
+
+
+
+/* =========================================
+   MUSIC
+========================================= */
+
+musicButton.addEventListener(
+    "click",
+    async function() {
+
+        if (!music.src) {
+
+            music.src =
+                "music.mp3";
+        }
+
+
+        if (music.paused) {
+
+            try {
+
+                await music.play();
+
+
+                musicButton.classList.add(
+                    "playing"
+                );
+
+
+                musicButton.querySelector(
+                    "span"
+                ).textContent =
+                    "Playing";
+
+
+            } catch (error) {
+
+                alert(
+                    "music.mp3 ফাইলটি letter.html-এর একই folder-এ রাখো।"
+                );
+
             }
+
+        } else {
+
+            music.pause();
+
+
+            musicButton.classList.remove(
+                "playing"
+            );
+
+
+            musicButton.querySelector(
+                "span"
+            ).textContent =
+                "Music";
+
+        }
+
+    }
+);
+
+
+
+/* =========================================
+   FINAL SURPRISE
+========================================= */
+
+surpriseButton.addEventListener(
+    "click",
+    function() {
+
+        showScreen(
+            surpriseScreen
         );
 
 
+        createEmojiBurst(25);
 
-        /* =========================================
-           CREATE HEART
-        ========================================== */
-
-        function createHeart(
-            large = false
-        ) {
-
-
-            const heart =
-                document.createElement(
-                    "span"
-                );
-
-
-            heart.className =
-                "heart";
-
-
-            heart.textContent =
-                Math.random() > .2
-                    ? "♥"
-                    : "♡";
-
-
-            heart.style.left =
-                Math.random() * 100 +
-                "%";
-
-
-            heart.style.fontSize =
-
-                (
-                    large
-
-                        ? 24 +
-                          Math.random() * 20
-
-                        : 10 +
-                          Math.random() * 16
-
-                ) + "px";
-
-
-            heart.style.animationDuration =
-
-                5 +
-                Math.random() * 7 +
-                "s";
-
-
-            hearts.appendChild(
-                heart
-            );
-
-
-            setTimeout(
-                function() {
-
-                    heart.remove();
-
-                },
-                14000
-            );
-
-        }
+    }
+);
 
 
 
-        /* =========================================
-           HEART BURST
-        ========================================== */
+/* =========================================
+   READ AGAIN
+========================================= */
 
-        function heartBurst(amount) {
+againButton.addEventListener(
+    "click",
+    function() {
 
+        showScreen(
+            letterScreen
+        );
 
-            for (
-                let i = 0;
-                i < amount;
-                i++
-            ) {
-
-
-                setTimeout(
-                    function() {
-
-                        createHeart(true);
-
-                    },
-                    i * 45
-                );
-
-            }
-
-        }
+    }
+);
 
 
 
-        /* =========================================
-           BACKGROUND HEARTS
-        ========================================== */
+/* =========================================
+   EMOJI LIST
+========================================= */
 
-        setInterval(
+const emojiList = [
+
+    "🤝",
+    "⭐",
+    "✨",
+    "🌟",
+    "🎉",
+    "😊",
+    "🌱",
+    "🫶",
+    "🎈"
+
+];
+
+
+
+/* =========================================
+   CREATE FLOATING EMOJI
+========================================= */
+
+function createFloatingEmoji() {
+
+    const emoji =
+        document.createElement(
+            "span"
+        );
+
+
+    emoji.className =
+        "floating-emoji";
+
+
+    emoji.textContent =
+        emojiList[
+            Math.floor(
+                Math.random() *
+                emojiList.length
+            )
+        ];
+
+
+    emoji.style.left =
+        Math.random() * 100 +
+        "%";
+
+
+    emoji.style.fontSize =
+        (
+            15 +
+            Math.random() * 15
+        ) +
+        "px";
+
+
+    emoji.style.animationDuration =
+        (
+            5 +
+            Math.random() * 5
+        ) +
+        "s";
+
+
+    floatingEmojis.appendChild(
+        emoji
+    );
+
+
+    setTimeout(
+        function() {
+
+            emoji.remove();
+
+        },
+        11000
+    );
+
+}
+
+
+
+/* =========================================
+   EMOJI BURST
+========================================= */
+
+function createEmojiBurst(
+    amount
+) {
+
+    for (
+        let i = 0;
+        i < amount;
+        i++
+    ) {
+
+        setTimeout(
             function() {
 
-
-                if (
-                    Math.random() > .25
-                ) {
-
-                    createHeart();
-
-                }
+                createFloatingEmoji();
 
             },
-            900
+            i * 80
         );
 
+    }
 
-    </script>
+}
+
+
+
+/* =========================================
+   BACKGROUND FLOATING EMOJIS
+========================================= */
+
+setInterval(
+    function() {
+
+        createFloatingEmoji();
+
+    },
+    1000
+);
+
+
+</script>
 
 </body>
 
