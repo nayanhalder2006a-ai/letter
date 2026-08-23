@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 
 <head>
 
@@ -8,8 +8,9 @@
 <meta name="viewport"
       content="width=device-width, initial-scale=1.0">
 
-<title>A Letter For You ❤️</title>
+<title>একটি ছোট্ট চিঠি </title>
 
+<!-- Google Fonts -->
 <link rel="preconnect"
       href="https://fonts.googleapis.com">
 
@@ -17,90 +18,73 @@
       href="https://fonts.gstatic.com"
       crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap"
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Noto+Serif+Bengali:wght@400;500;600;700&display=swap"
       rel="stylesheet">
 
 
 <style>
 
-/* =========================
+/* =====================================================
    RESET
-========================= */
+===================================================== */
 
 * {
-
-    margin:
-        0;
-
-    padding:
-        0;
-
-    box-sizing:
-        border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
+
 
 html,
 body {
-
-    width:
-        100%;
-
-    min-height:
-        100%;
+    width: 100%;
+    min-height: 100%;
 }
+
 
 body {
 
-    min-height:
-        100vh;
+    min-height: 100vh;
 
-    overflow:
-        hidden;
+    overflow: hidden;
 
-    color:
-        white;
+    background: #120b13;
 
-    background:
-        #120b13;
+    color: white;
 
     font-family:
-        "Playfair Display",
-        Georgia,
+        "Noto Serif Bengali",
         serif;
 }
 
 
-/* =========================
+/* =====================================================
    BACKGROUND
-========================= */
+===================================================== */
 
 .background {
 
-    position:
-        fixed;
+    position: fixed;
 
-    inset:
-        -20%;
+    inset: -20%;
 
-    z-index:
-        -2;
+    z-index: -2;
 
     background:
 
         radial-gradient(
             circle at 20% 20%,
-            rgba(255,95,136,.24),
+            rgba(255, 95, 136, .25),
             transparent 30%
         ),
 
         radial-gradient(
             circle at 80% 70%,
-            rgba(170,90,255,.18),
+            rgba(170, 90, 255, .20),
             transparent 30%
         );
 
-    filter:
-        blur(10px);
+    filter: blur(10px);
 
     animation:
         backgroundMove
@@ -110,57 +94,46 @@ body {
         alternate;
 }
 
+
 @keyframes backgroundMove {
 
     from {
-
-        transform:
-            scale(1);
+        transform: scale(1);
     }
 
     to {
-
-        transform:
-            scale(1.12);
+        transform: scale(1.12);
     }
 }
 
 
-/* =========================
-   HEARTS
-========================= */
+/* =====================================================
+   FLOATING HEARTS
+===================================================== */
 
 #hearts {
 
-    position:
-        fixed;
+    position: fixed;
 
-    inset:
-        0;
+    inset: 0;
 
-    overflow:
-        hidden;
+    overflow: hidden;
 
-    pointer-events:
-        none;
+    pointer-events: none;
 
-    z-index:
-        100;
+    z-index: 100;
 }
+
 
 .heart {
 
-    position:
-        absolute;
+    position: absolute;
 
-    bottom:
-        -30px;
+    bottom: -40px;
 
-    color:
-        #ff8fab;
+    color: #ff8fab;
 
-    opacity:
-        0;
+    opacity: 0;
 
     animation:
         heartFloat
@@ -170,9 +143,10 @@ body {
     filter:
         drop-shadow(
             0 0 10px
-            rgba(255,143,171,.5)
+            rgba(255, 143, 171, .5)
         );
 }
+
 
 @keyframes heartFloat {
 
@@ -183,14 +157,11 @@ body {
             rotate(0deg)
             scale(.5);
 
-        opacity:
-            0;
+        opacity: 0;
     }
 
     15% {
-
-        opacity:
-            .8;
+        opacity: .8;
     }
 
     100% {
@@ -200,80 +171,66 @@ body {
             rotate(45deg)
             scale(1.2);
 
-        opacity:
-            0;
+        opacity: 0;
     }
 }
 
 
-/* =========================
+/* =====================================================
    SCREEN
-========================= */
+===================================================== */
 
 .screen {
 
-    position:
-        fixed;
+    position: fixed;
 
-    inset:
-        0;
+    inset: 0;
 
-    display:
-        grid;
+    display: grid;
 
-    place-items:
-        center;
+    place-items: center;
 
-    padding:
-        15px;
+    padding: 15px;
 
-    opacity:
-        0;
+    opacity: 0;
 
-    pointer-events:
-        none;
+    pointer-events: none;
 
-    transform:
-        scale(.97);
+    transform: scale(.97);
 
     transition:
         opacity .7s ease,
         transform .7s ease;
 }
 
+
 .screen.active {
 
-    opacity:
-        1;
+    opacity: 1;
 
-    pointer-events:
-        auto;
+    pointer-events: auto;
 
-    transform:
-        scale(1);
+    transform: scale(1);
 }
 
 
-/* =========================
-   ENVELOPE SCREEN
-========================= */
+/* =====================================================
+   INTRO
+===================================================== */
 
 .intro {
 
-    width:
-        100%;
+    width: 100%;
 
-    text-align:
-        center;
+    text-align: center;
 }
+
 
 .small-heart {
 
-    color:
-        #ff8fab;
+    color: #ff8fab;
 
-    font-size:
-        30px;
+    font-size: 32px;
 
     animation:
         heartbeat
@@ -281,102 +238,97 @@ body {
         infinite;
 }
 
+
 @keyframes heartbeat {
 
     50% {
 
-        transform:
-            scale(1.3);
+        transform: scale(1.3);
 
         text-shadow:
             0 0 25px
-            rgba(255,143,171,.8);
+            rgba(255, 143, 171, .8);
     }
 }
 
+
 .eyebrow {
 
-    margin:
-        12px 0;
+    margin: 12px 0;
 
-    text-transform:
-        uppercase;
+    text-transform: uppercase;
 
-    letter-spacing:
-        .2em;
+    letter-spacing: .18em;
 
-    font-size:
-        10px;
+    font-family:
+        Arial,
+        sans-serif;
 
-    opacity:
-        .65;
+    font-size: 10px;
+
+    opacity: .65;
 }
+
 
 h1 {
 
+    font-family:
+        "Caveat",
+        cursive;
+
     font-size:
         clamp(
-            50px,
+            55px,
             13vw,
             90px
         );
 
-    line-height:
-        .85;
+    line-height: .85;
 
-    font-weight:
-        500;
+    font-weight: 500;
 }
+
 
 h1 span {
 
-    display:
-        block;
+    display: block;
 
-    color:
-        #ff8fab;
+    color: #ff8fab;
 
-    font-style:
-        italic;
+    font-style: italic;
 }
+
 
 .subtitle {
 
-    margin-top:
-        20px;
+    margin-top: 20px;
 
-    opacity:
-        .65;
+    opacity: .65;
 
-    font-size:
-        14px;
+    font-size: 14px;
 }
 
 
-/* =========================
+/* =====================================================
    ENVELOPE
-========================= */
+===================================================== */
 
 .envelope-button {
 
-    margin-top:
-        25px;
+    margin-top: 25px;
 
-    padding:
-        25px;
+    padding: 25px;
 
-    border:
-        none;
+    border: none;
 
-    background:
-        transparent;
+    background: transparent;
 
-    cursor:
-        pointer;
+    cursor: pointer;
 
     transition:
         transform .3s;
 }
+
 
 .envelope-button:hover {
 
@@ -384,6 +336,7 @@ h1 span {
         translateY(-8px)
         scale(1.03);
 }
+
 
 .envelope {
 
@@ -393,11 +346,9 @@ h1 span {
             78vw
         );
 
-    aspect-ratio:
-        1.52;
+    aspect-ratio: 1.52;
 
-    position:
-        relative;
+    position: relative;
 
     filter:
         drop-shadow(
@@ -406,16 +357,14 @@ h1 span {
         );
 }
 
+
 .envelope-back {
 
-    position:
-        absolute;
+    position: absolute;
 
-    inset:
-        0;
+    inset: 0;
 
-    border-radius:
-        8px;
+    border-radius: 8px;
 
     background:
         linear-gradient(
@@ -425,28 +374,22 @@ h1 span {
         );
 }
 
+
 .paper {
 
-    position:
-        absolute;
+    position: absolute;
 
-    width:
-        76%;
+    width: 76%;
 
-    height:
-        82%;
+    height: 82%;
 
-    left:
-        12%;
+    left: 12%;
 
-    top:
-        -5%;
+    top: -5%;
 
-    background:
-        #fff8ed;
+    background: #fff8ed;
 
-    border-radius:
-        4px;
+    border-radius: 4px;
 
     box-shadow:
         0 8px 18px
@@ -454,21 +397,17 @@ h1 span {
 
     transition:
         transform .8s
-        cubic-bezier(
-            .2,.8,.2,1
-        );
+        cubic-bezier(.2,.8,.2,1);
 }
+
 
 .flap {
 
-    position:
-        absolute;
+    position: absolute;
 
-    inset:
-        0 0 auto;
+    inset: 0 0 auto;
 
-    height:
-        65%;
+    height: 65%;
 
     background:
         linear-gradient(
@@ -484,29 +423,23 @@ h1 span {
             50% 100%
         );
 
-    transform-origin:
-        top;
+    transform-origin: top;
 
     transition:
         transform .8s
-        cubic-bezier(
-            .2,.8,.2,1
-        );
+        cubic-bezier(.2,.8,.2,1);
 
-    z-index:
-        4;
+    z-index: 4;
 }
+
 
 .pocket {
 
-    position:
-        absolute;
+    position: absolute;
 
-    inset:
-        auto 0 0;
+    inset: auto 0 0;
 
-    height:
-        72%;
+    height: 72%;
 
     background:
         linear-gradient(
@@ -524,64 +457,52 @@ h1 span {
             0 100%
         );
 
-    z-index:
-        5;
+    z-index: 5;
 }
+
 
 .seal {
 
-    position:
-        absolute;
+    position: absolute;
 
-    left:
-        50%;
+    left: 50%;
 
-    top:
-        53%;
+    top: 53%;
 
     transform:
-        translate(-50%,-50%);
+        translate(-50%, -50%);
 
-    width:
-        55px;
+    width: 55px;
 
-    height:
-        55px;
+    height: 55px;
 
-    display:
-        grid;
+    display: grid;
 
-    place-items:
-        center;
+    place-items: center;
 
-    border-radius:
-        50%;
+    border-radius: 50%;
 
-    background:
-        #8f2347;
+    background: #8f2347;
 
-    color:
-        #ffd8e1;
+    color: #ffd8e1;
 
     box-shadow:
         0 7px 18px
         rgba(0,0,0,.3);
 
-    z-index:
-        6;
+    z-index: 6;
 
-    transition:
-        opacity .3s;
+    transition: opacity .3s;
 }
+
 
 .opening .flap {
 
-    transform:
-        rotateX(180deg);
+    transform: rotateX(180deg);
 
-    z-index:
-        2;
+    z-index: 2;
 }
+
 
 .opening .paper {
 
@@ -589,27 +510,28 @@ h1 span {
         translateY(-100%);
 }
 
+
 .opening .seal {
 
-    opacity:
-        0;
+    opacity: 0;
 }
+
 
 .click-text {
 
-    color:
-        #ff8fab;
+    color: #ff8fab;
 
-    font:
-        22px
+    font-family:
         "Caveat",
         cursive;
+
+    font-size: 22px;
 }
 
 
-/* =========================
-   LETTER
-========================= */
+/* =====================================================
+   LETTER CONTAINER
+===================================================== */
 
 .letter-container {
 
@@ -619,29 +541,28 @@ h1 span {
             100%
         );
 
-    max-height:
-        94vh;
+    max-height: 94vh;
 
-    overflow-y:
-        auto;
+    overflow-y: auto;
 
-    padding:
-        8px;
+    padding: 8px;
 }
+
+
+/* =====================================================
+   LETTER PAPER
+===================================================== */
 
 .letter-card {
 
-    position:
-        relative;
+    position: relative;
 
-    color:
-        #503740;
+    color: #503740;
 
     background:
 
         radial-gradient(
-            rgba(90,55,60,.07)
-            .8px,
+            rgba(90,55,60,.07) .8px,
             transparent .8px
         )
         0 0 / 7px 7px,
@@ -655,61 +576,59 @@ h1 span {
             65px
         );
 
-    border-radius:
-        4px;
+    border-radius: 4px;
 
     box-shadow:
         0 30px 80px
         rgba(0,0,0,.45);
 
-    transform:
-        rotate(-.4deg);
+    transform: rotate(-.4deg);
 }
+
 
 .letter-card::before {
 
-    content:
-        "";
+    content: "";
 
-    position:
-        absolute;
+    position: absolute;
 
-    inset:
-        10px;
+    inset: 10px;
 
     border:
         1px solid
         rgba(120,65,75,.18);
 
-    pointer-events:
-        none;
+    pointer-events: none;
 }
+
+
+/* =====================================================
+   LETTER HEADER
+===================================================== */
 
 .letter-header {
 
-    display:
-        flex;
+    display: flex;
 
-    justify-content:
-        space-between;
+    justify-content: space-between;
 
-    align-items:
-        center;
+    align-items: center;
 
-    margin-bottom:
-        30px;
+    margin-bottom: 30px;
 
-    font:
-        14px
+    font-family:
         "Caveat",
         cursive;
 
-    opacity:
-        .7;
+    font-size: 17px;
+
+    opacity: .7;
 }
 
 
-/* Music */
+/* =====================================================
+   MUSIC BUTTON
+===================================================== */
 
 #musicButton {
 
@@ -720,18 +639,16 @@ h1 span {
     background:
         rgba(255,255,255,.4);
 
-    color:
-        #503740;
+    color: #503740;
 
     padding:
         7px 14px;
 
-    border-radius:
-        30px;
+    border-radius: 30px;
 
-    cursor:
-        pointer;
+    cursor: pointer;
 }
+
 
 #musicButton.playing {
 
@@ -742,12 +659,12 @@ h1 span {
         alternate;
 }
 
+
 @keyframes musicPulse {
 
     to {
 
-        transform:
-            scale(1.06);
+        transform: scale(1.06);
 
         box-shadow:
             0 0 15px
@@ -756,39 +673,43 @@ h1 span {
 }
 
 
-/* =========================
-   HANDWRITING
-========================= */
+/* =====================================================
+   BANGLA HANDWRITING
+===================================================== */
 
 .letter {
 
-    max-width:
-        680px;
+    max-width: 680px;
 
-    margin:
-        auto;
+    margin: auto;
 
-    font:
+    font-family:
+        "Noto Serif Bengali",
+        serif;
 
-        400
+    font-size:
         clamp(
-            22px,
+            19px,
             3vw,
-            29px
-        )
-        /
-        1.55
-        "Caveat",
-        cursive;
+            25px
+        );
+
+    line-height: 1.9;
 }
+
 
 .letter p {
 
-    margin-bottom:
-        19px;
+    margin-bottom: 22px;
 }
 
+
 .dear {
+
+    font-family:
+        "Caveat",
+        "Noto Serif Bengali",
+        cursive;
 
     font-size:
         clamp(
@@ -796,64 +717,87 @@ h1 span {
             5vw,
             42px
         );
+
+    line-height: 1.3;
 }
+
+
+.dear span {
+
+    color: #9d425d;
+}
+
+
+.letter em {
+
+    font-family:
+        "Caveat",
+        cursive;
+
+    font-size: 1.1em;
+
+    color: #9d425d;
+
+    font-weight: 600;
+}
+
 
 .signature {
 
-    margin-top:
-        35px;
+    margin-top: 35px;
 
-    text-align:
-        right;
+    text-align: right;
+
+    font-weight: 600;
 }
+
 
 .signature span {
 
-    color:
-        #9d425d;
+    color: #9d425d;
+
+    font-weight: 700;
 }
 
 
-/* =========================
+/* =====================================================
    BUTTON
-========================= */
+===================================================== */
 
 .letter-footer {
 
-    text-align:
-        center;
+    text-align: center;
 
-    margin-top:
-        30px;
+    margin-top: 30px;
 }
+
 
 .primary-button {
 
-    border:
-        none;
+    border: none;
 
     padding:
         13px 22px;
 
-    border-radius:
-        999px;
+    border-radius: 999px;
 
-    color:
-        white;
+    color: white;
 
-    background:
-        #b83d62;
+    background: #b83d62;
 
-    cursor:
-        pointer;
+    cursor: pointer;
 
     box-shadow:
         0 8px 20px
         rgba(130,35,70,.3);
 
-    transition:
-        .25s;
+    transition: .25s;
+
+    font-family:
+        "Noto Serif Bengali",
+        serif;
 }
+
 
 .primary-button:hover {
 
@@ -862,9 +806,9 @@ h1 span {
 }
 
 
-/* =========================
+/* =====================================================
    SURPRISE
-========================= */
+===================================================== */
 
 .surprise {
 
@@ -874,17 +818,15 @@ h1 span {
             100%
         );
 
-    text-align:
-        center;
+    text-align: center;
 }
+
 
 .sparkle {
 
-    color:
-        #ff8fab;
+    color: #ff8fab;
 
-    font-size:
-        40px;
+    font-size: 40px;
 
     animation:
         spin
@@ -893,16 +835,20 @@ h1 span {
         infinite;
 }
 
+
 @keyframes spin {
 
     to {
-
-        transform:
-            rotate(360deg);
+        transform: rotate(360deg);
     }
 }
 
+
 h2 {
+
+    font-family:
+        "Caveat",
+        cursive;
 
     font-size:
         clamp(
@@ -911,21 +857,19 @@ h2 {
             90px
         );
 
-    line-height:
-        .9;
+    line-height: .9;
 
-    font-weight:
-        500;
+    font-weight: 500;
 }
+
 
 h2 span {
 
-    color:
-        #ff8fab;
+    color: #ff8fab;
 
-    font-style:
-        italic;
+    font-style: italic;
 }
+
 
 .surprise-card {
 
@@ -948,24 +892,21 @@ h2 span {
     background:
         rgba(255,255,255,.05);
 
-    backdrop-filter:
-        blur(16px);
+    backdrop-filter: blur(16px);
 
-    border-radius:
-        22px;
+    border-radius: 22px;
 
     box-shadow:
         0 25px 80px
         rgba(0,0,0,.3);
 }
 
+
 .big-heart {
 
-    color:
-        #ff8fab;
+    color: #ff8fab;
 
-    font-size:
-        55px;
+    font-size: 55px;
 
     animation:
         heartbeat
@@ -973,17 +914,20 @@ h2 span {
         infinite;
 }
 
+
 .surprise-card p {
 
-    margin-top:
-        18px;
+    margin-top: 18px;
 
-    font:
-        500
-        31px/1.2
-        "Caveat",
-        cursive;
+    font-family:
+        "Noto Serif Bengali",
+        serif;
+
+    font-size: 22px;
+
+    line-height: 1.8;
 }
+
 
 .ghost-button {
 
@@ -994,110 +938,133 @@ h2 span {
         1px solid
         rgba(255,255,255,.18);
 
-    border-radius:
-        999px;
+    border-radius: 999px;
 
-    background:
-        transparent;
+    background: transparent;
 
     color:
         rgba(255,255,255,.7);
 
-    cursor:
-        pointer;
+    cursor: pointer;
 }
 
 
-/* =========================
-   PHONE
-========================= */
+/* =====================================================
+   PHONE RESPONSIVE
+===================================================== */
 
-@media (max-width:600px) {
+@media (max-width: 600px) {
 
     .screen {
-
-        padding:
-            10px;
+        padding: 10px;
     }
+
 
     .letter-container {
 
-        max-height:
-            97vh;
+        max-height: 97vh;
 
-        padding:
-            4px;
+        padding: 4px;
     }
+
 
     .letter-card {
 
         padding:
-            30px 20px;
+            28px 19px;
     }
+
 
     .letter-card::before {
 
-        inset:
-            7px;
+        inset: 7px;
     }
+
 
     .letter {
 
-        font-size:
-            23px;
+        font-size: 18px;
 
-        line-height:
-            1.5;
+        line-height: 1.85;
     }
+
+
+    .dear {
+
+        font-size: 34px;
+    }
+
+
+    .letter p {
+
+        margin-bottom: 19px;
+    }
+
 
     .letter-header {
 
-        margin-bottom:
-            20px;
+        margin-bottom: 20px;
+
+        font-size: 15px;
     }
+
 
     .signature {
 
-        text-align:
-            left;
+        text-align: left;
+
+        margin-top: 25px;
     }
+
 
     .surprise-card {
 
         padding:
             30px 18px;
     }
+
+
+    .surprise-card p {
+
+        font-size: 19px;
+    }
 }
 
 
-/* =========================
+/* =====================================================
    SMALL PHONE
-========================= */
+===================================================== */
 
-@media (max-width:360px) {
+@media (max-width: 360px) {
 
     h1 {
-
-        font-size:
-            50px;
+        font-size: 50px;
     }
+
 
     .envelope {
 
-        width:
-            75vw;
+        width: 75vw;
     }
+
 
     .letter {
 
-        font-size:
-            21px;
+        font-size: 17px;
+
+        line-height: 1.8;
     }
+
+
+    .dear {
+
+        font-size: 31px;
+    }
+
 
     .primary-button {
 
-        font-size:
-            13px;
+        font-size: 12px;
     }
 }
 
@@ -1109,14 +1076,20 @@ h2 span {
 <body>
 
 
+<!-- Background -->
+
 <div class="background"></div>
+
+
+<!-- Floating hearts -->
 
 <div id="hearts"></div>
 
 
-<!-- =================================================
-     ENVELOPE PAGE
-================================================= -->
+
+<!-- =====================================================
+     ENVELOPE SCREEN
+===================================================== -->
 
 <section
     id="envelopeScreen"
@@ -1164,29 +1137,30 @@ h2 span {
 
 
                 <div
-                    class="envelope-back"
-                ></div>
+                    class="envelope-back">
+                </div>
 
 
                 <div
-                    class="paper"
-                ></div>
+                    class="paper">
+                </div>
 
 
                 <div
-                    class="flap"
-                ></div>
+                    class="flap">
+                </div>
 
 
                 <div
-                    class="pocket"
-                ></div>
+                    class="pocket">
+                </div>
 
 
                 <div
-                    class="seal"
-                >
+                    class="seal">
+
                     ♥
+
                 </div>
 
 
@@ -1208,9 +1182,9 @@ h2 span {
 
 
 
-<!-- =================================================
-     LETTER PAGE
-================================================= -->
+<!-- =====================================================
+     LETTER SCREEN
+===================================================== -->
 
 <section
     id="letterScreen"
@@ -1227,7 +1201,7 @@ h2 span {
 
 
                 <span>
-                    A little letter ❤️
+                    একটি ছোট্ট চিঠি ❤️
                 </span>
 
 
@@ -1236,7 +1210,6 @@ h2 span {
                 >
 
                     ♫
-
                     <span>
                         Music
                     </span>
@@ -1248,6 +1221,10 @@ h2 span {
 
 
 
+            <!-- =================================================
+                 YOUR MESSAGE
+            ================================================= -->
+
             <article class="letter">
 
 
@@ -1255,7 +1232,7 @@ h2 span {
 
                     Dear
                     <span id="personName">
-                        You
+                        Member
                     </span>,
 
                 </p>
@@ -1263,85 +1240,75 @@ h2 span {
 
                 <p>
 
-                    I could have written this
-                    as a normal message, but
-                    somehow that didn't feel
-                    special enough.
+                    জীবনে সব দিন একরকম যায় না।
+                    কখনো আমরা খুব ভালো থাকি,
+                    আবার কখনো মনে হয় সবকিছু কঠিন হয়ে গেছে।
+                    কিন্তু মনে রাখিস—
+                    খারাপ সময় কখনো চিরদিন থাকে না।
 
                 </p>
 
 
                 <p>
 
-                    So I made you a tiny corner
-                    of the internet — just to
-                    say something I've been
-                    meaning to say.
+                    তুই যতবার পড়ে যাবি,
+                    ততবার উঠে দাঁড়াবি।
+                    সবাই তোর ওপর বিশ্বাস না করলেও,
+                    নিজের ওপর বিশ্বাসটা কখনো হারাবি না।
+                    কারণ তোর ভেতরে এমন একটা শক্তি আছে,
+                    যেটা হয়তো তুই নিজেই এখনো
+                    পুরোপুরি বুঝতে পারিস না। 
 
                 </p>
 
 
                 <p>
 
-                    Some people have this
-                    quiet way of making
-                    ordinary moments feel
-                    a little brighter.
+                    জীবনে সফল হতে সময় লাগতে পারে,
+                    অনেক বাধা আসতে পারে,
+                    অনেক মানুষ তোকে নিরুৎসাহিত করতে পারে।
+                    কিন্তু তুই থামবি না।
+                    ধীরে এগোলেও এগিয়ে যাবি।
+                    কারণ
+                    <em>
+                        slow progress is still progress.
+                    </em>
+                    🌱
 
                 </p>
 
 
                 <p>
 
-                    A smile, a conversation,
-                    a silly little moment...
-                    and suddenly the day
-                    feels different.
+                    আর একটা কথা মনে রাখিস—
+                    তুই একা নস।
+                    ভালো সময়ে যেমন আমি তোর পাশে থাকব,
+                    খারাপ সময়েও তোর পাশে থাকার চেষ্টা করব।
+                    যখন আমার group member হয়েছিস,
+                    তখন তোর problem আমার problem।
 
                 </p>
 
 
                 <p>
 
-                    That's what you do.
-
-                </p>
-
-
-                <p>
-
-                    I hope you always remember
-                    that you are appreciated,
-                    you are special, and you
-                    deserve all the beautiful
-                    things life has waiting
-                    for you.
-
-                </p>
-
-
-                <p>
-
-                    And if this little website
-                    makes you smile even for
-                    a few seconds, then it has
-                    already done exactly what
-                    I wanted.
+                    তাই নিজের ওপর বিশ্বাস রাখ,
+                    স্বপ্ন দেখ,
+                    কঠিন পরিশ্রম কর
+                    আর নিজের মতো করে এগিয়ে চল।
 
                 </p>
 
 
                 <p class="signature">
 
-                    With a little bit of courage,
+                    তোর Group Members
 
-                    <br>
                     <br>
 
                     <span>
 
-                        Someone who thinks
-                        you're pretty special ❤️
+                        সবসময় পাশে আছে। 
 
                     </span>
 
@@ -1376,9 +1343,9 @@ h2 span {
 
 
 
-<!-- =================================================
+<!-- =====================================================
      FINAL SURPRISE
-================================================= -->
+===================================================== -->
 
 <section
     id="surpriseScreen"
@@ -1423,9 +1390,10 @@ h2 span {
                     You
                 </span>,
 
-                you make the world feel
-                a little nicer just by
-                being in it. ❤️
+                তুই নিজের মতো করে
+                সবসময় এগিয়ে চল।
+                তোর Group Members
+                সবসময় তোর পাশে আছে। ❤️
 
             </p>
 
@@ -1449,9 +1417,9 @@ h2 span {
 
 
 
-<!-- =================================================
-     AUDIO
-================================================= -->
+<!-- =====================================================
+     MUSIC
+===================================================== -->
 
 <audio
     id="backgroundMusic"
@@ -1462,9 +1430,9 @@ h2 span {
 
 <script>
 
-/* =================================================
-   GET NAME
-================================================= */
+/* =====================================================
+   GET NAME FROM URL
+===================================================== */
 
 const params =
     new URLSearchParams(
@@ -1479,8 +1447,10 @@ const urlName =
 const personName =
     urlName
         ? urlName
-        : "You";
+        : "Member";
 
+
+/* Put name into letter */
 
 document.getElementById(
     "personName"
@@ -1488,55 +1458,66 @@ document.getElementById(
     personName;
 
 
+/* Put name into surprise */
+
 document.getElementById(
     "surpriseName"
 ).textContent =
     personName;
 
 
-/* =================================================
+
+/* =====================================================
    ELEMENTS
-================================================= */
+===================================================== */
 
 const envelopeButton =
     document.getElementById(
         "openEnvelope"
     );
 
+
 const envelopeScreen =
     document.getElementById(
         "envelopeScreen"
     );
+
 
 const letterScreen =
     document.getElementById(
         "letterScreen"
     );
 
+
 const surpriseScreen =
     document.getElementById(
         "surpriseScreen"
     );
+
 
 const surpriseButton =
     document.getElementById(
         "surpriseButton"
     );
 
+
 const againButton =
     document.getElementById(
         "againButton"
     );
+
 
 const musicButton =
     document.getElementById(
         "musicButton"
     );
 
+
 const music =
     document.getElementById(
         "backgroundMusic"
     );
+
 
 const hearts =
     document.getElementById(
@@ -1544,9 +1525,10 @@ const hearts =
     );
 
 
-/* =================================================
-   SCREEN
-================================================= */
+
+/* =====================================================
+   SHOW SCREEN
+===================================================== */
 
 function showScreen(screen) {
 
@@ -1566,13 +1548,13 @@ function showScreen(screen) {
     screen.classList.add(
         "active"
     );
-
 }
 
 
-/* =================================================
-   ENVELOPE
-================================================= */
+
+/* =====================================================
+   OPEN ENVELOPE
+===================================================== */
 
 envelopeButton.addEventListener(
     "click",
@@ -1586,6 +1568,7 @@ envelopeButton.addEventListener(
         ) {
 
             return;
+
         }
 
 
@@ -1594,13 +1577,12 @@ envelopeButton.addEventListener(
         );
 
 
+        /* Heart animation */
+
         heartBurst(30);
 
 
-        /*
-           The letter appears after
-           the envelope animation.
-        */
+        /* Show letter */
 
         setTimeout(
             function() {
@@ -1617,56 +1599,60 @@ envelopeButton.addEventListener(
 );
 
 
-/* =================================================
-   MUSIC BUTTON
-================================================= */
+
+/* =====================================================
+   MUSIC
+===================================================== */
 
 musicButton.addEventListener(
     "click",
     async function() {
 
+
         /*
-           No music file is connected yet.
+           IMPORTANT:
 
-           Add your MP3 URL here if
-           you want online background music.
+           Put music.mp3 in the same folder
+           as letter.html.
 
-           Example:
+           Then uncomment this line:
 
-           music.src =
-           "music.mp3";
+           music.src = "music.mp3";
         */
+
 
         if (!music.src) {
 
-            alert(
-                "Add your music file to letter.html first."
-            );
+            music.src = "music.mp3";
 
-            return;
         }
 
 
-        if (
-            music.paused
-        ) {
+        if (music.paused) {
 
             try {
 
                 await music.play();
 
+
                 musicButton.classList.add(
                     "playing"
                 );
+
 
                 musicButton.querySelector(
                     "span"
                 ).textContent =
                     "Playing";
 
+
             }
 
             catch(error) {
+
+                alert(
+                    "music.mp3 ফাইলটি letter.html-এর সাথে একই folder-এ রাখো।"
+                );
 
                 console.log(error);
 
@@ -1678,9 +1664,11 @@ musicButton.addEventListener(
 
             music.pause();
 
+
             musicButton.classList.remove(
                 "playing"
             );
+
 
             musicButton.querySelector(
                 "span"
@@ -1693,13 +1681,15 @@ musicButton.addEventListener(
 );
 
 
-/* =================================================
+
+/* =====================================================
    FINAL SURPRISE
-================================================= */
+===================================================== */
 
 surpriseButton.addEventListener(
     "click",
     function() {
+
 
         showScreen(
             surpriseScreen
@@ -1712,9 +1702,10 @@ surpriseButton.addEventListener(
 );
 
 
-/* =================================================
+
+/* =====================================================
    READ AGAIN
-================================================= */
+===================================================== */
 
 againButton.addEventListener(
     "click",
@@ -1728,13 +1719,15 @@ againButton.addEventListener(
 );
 
 
-/* =================================================
+
+/* =====================================================
    CREATE HEART
-================================================= */
+===================================================== */
 
 function createHeart(
     large = false
 ) {
+
 
     const heart =
         document.createElement(
@@ -1761,12 +1754,14 @@ function createHeart(
 
         (
             large
+
                 ? 24 +
                   Math.random() * 20
+
                 : 10 +
                   Math.random() * 16
-        ) +
-        "px";
+
+        ) + "px";
 
 
     heart.style.animationDuration =
@@ -1793,17 +1788,20 @@ function createHeart(
 }
 
 
-/* =================================================
+
+/* =====================================================
    HEART BURST
-================================================= */
+===================================================== */
 
 function heartBurst(amount) {
+
 
     for (
         let i = 0;
         i < amount;
         i++
     ) {
+
 
         setTimeout(
             function() {
@@ -1819,12 +1817,14 @@ function heartBurst(amount) {
 }
 
 
-/* =================================================
-   FLOATING HEARTS
-================================================= */
+
+/* =====================================================
+   BACKGROUND HEARTS
+===================================================== */
 
 setInterval(
     function() {
+
 
         if (
             Math.random() > .25
